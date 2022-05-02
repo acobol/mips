@@ -1,5 +1,5 @@
 import { DefaultNodeModel } from "@projectstorm/react-diagrams";
-import { RightAnglePortModel } from "../../App";
+import RightAnglePortModel from "../../Ports/RigthAnglePort/RightAnglePortModel";
 
 class ShiftLeftModel extends DefaultNodeModel {
   constructor(name = "shiftLeft") {

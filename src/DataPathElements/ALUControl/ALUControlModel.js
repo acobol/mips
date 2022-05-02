@@ -1,5 +1,5 @@
 import { DefaultNodeModel } from "@projectstorm/react-diagrams";
-import { RightAnglePortModel } from "../../App";
+import RightAnglePortModel from "../../Ports/RigthAnglePort/RightAnglePortModel";
 
 class ALUControlModel extends DefaultNodeModel {
   constructor(name = "ALUControl") {

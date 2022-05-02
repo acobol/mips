@@ -1,7 +1,7 @@
 import './App.css';
 import Stencil from './stencil';
 import Canvas from './canvas';
-import createEngine, {DiagramModel, RightAngleLinkFactory, RightAngleLinkModel, DefaultPortModel} from '@projectstorm/react-diagrams';
+import createEngine, {DiagramModel, RightAngleLinkFactory} from '@projectstorm/react-diagrams';
 import MultiplexorFactory from './DataPathElements/Multiplexor/MultiplexorFactory';
 import ALUFactory from './DataPathElements/ALU/ALUFactory';
 import RegistryBankFactory from './DataPathElements/RegistryBank/RegistryBankFactory';
@@ -17,9 +17,9 @@ import AndFactory from './DataPathElements/And/AndFactory';
 import ControlFactory from './DataPathElements/Control/ControlFactory';
 import ConcatenatorFactory from './DataPathElements/Concatenator/ConcatenatorFactory';
 import datapath from './datapath.json';
-import { AbstractModelFactory } from '@projectstorm/react-canvas-core';
+import RightAnglePortFactory from './Ports/RigthAnglePort/RightAnglePortFactory';
 
-const factories = [
+const nodeFactories = [
   MultiplexorFactory,
   ALUFactory,
   RegistryBankFactory,
@@ -34,37 +34,27 @@ const factories = [
   AndFactory,
   ControlFactory,
   ConcatenatorFactory
-]
+];
 
-export class RightAnglePortModel extends DefaultPortModel {
-  constructor(isIn, name, label) {
-    super(isIn, name, label);
-    this.options.type = 'rightAnglePort';
-  }
+const linkFactories = [
+  RightAngleLinkFactory
+];
 
-	createLinkModel(factory) {
-		return new RightAngleLinkModel({color: 'orange', selectedColor: 'orange'});
-	}
-}
-
-export class RightAnglePortFactory extends AbstractModelFactory {
-  constructor() {
-    super('rightAnglePort');
-  }
-
-  generateModel() {
-    return new RightAnglePortModel(false, 'unknown', 'unknown');
-  }
-}
-
+const portFactories = [
+  RightAnglePortFactory
+];
 
 function App() {
   const engine = createEngine();
-  for (const factory of factories) {
+  for (const factory of nodeFactories) {
     engine.getNodeFactories().registerFactory(new factory());
   }
-  engine.getLinkFactories().registerFactory(new RightAngleLinkFactory());
-  engine.getPortFactories().registerFactory(new RightAnglePortFactory());
+  for (const factory of linkFactories) {
+    engine.getLinkFactories().registerFactory(new factory());
+  }
+  for (const factory of portFactories) {
+    engine.getPortFactories().registerFactory(new factory());
+  }
   const diagram = new DiagramModel();
   engine.getStateMachine().getCurrentState().dragNewLink.config.allowLooseLinks = false;
   debugger;
