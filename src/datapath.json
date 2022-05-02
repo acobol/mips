@@ -569,9 +569,9 @@
                   ],
                   "labels": [],
                   "width": 3,
-                  "color": "gray",
+                  "color": "orange",
                   "curvyness": 50,
-                  "selectedColor": "rgb(0,192,255)"
+                  "selectedColor": "orange"
               },
               "3dbe3cd8-a350-4005-883a-20ddc4822f27": {
                   "id": "3dbe3cd8-a350-4005-883a-20ddc4822f27",
@@ -729,9 +729,9 @@
                   ],
                   "labels": [],
                   "width": 3,
-                  "color": "gray",
+                  "color": "orange",
                   "curvyness": 50,
-                  "selectedColor": "rgb(0,192,255)"
+                  "selectedColor": "orange"
               },
               "43fae9a6-d11c-4fd2-8fe8-91e1b811cd96": {
                   "id": "43fae9a6-d11c-4fd2-8fe8-91e1b811cd96",
@@ -861,9 +861,9 @@
                   ],
                   "labels": [],
                   "width": 3,
-                  "color": "gray",
+                  "color": "orange",
                   "curvyness": 50,
-                  "selectedColor": "rgb(0,192,255)"
+                  "selectedColor": "orange"
               },
               "456db4c2-fc6b-4168-815a-77175473d16e": {
                   "id": "456db4c2-fc6b-4168-815a-77175473d16e",
@@ -901,9 +901,9 @@
                   ],
                   "labels": [],
                   "width": 3,
-                  "color": "gray",
+                  "color": "orange",
                   "curvyness": 50,
-                  "selectedColor": "rgb(0,192,255)"
+                  "selectedColor": "orange"
               },
               "cc8eeff7-6779-449c-b466-2278ac8afb65": {
                   "id": "cc8eeff7-6779-449c-b466-2278ac8afb65",
@@ -1171,9 +1171,9 @@
                   ],
                   "labels": [],
                   "width": 3,
-                  "color": "gray",
+                  "color": "orange",
                   "curvyness": 50,
-                  "selectedColor": "rgb(0,192,255)"
+                  "selectedColor": "orange"
               },
               "8aad8760-21bb-4fc7-87e5-5cf0e9f75b2a": {
                   "id": "8aad8760-21bb-4fc7-87e5-5cf0e9f75b2a",
@@ -1211,9 +1211,9 @@
                   ],
                   "labels": [],
                   "width": 3,
-                  "color": "gray",
+                  "color": "orange",
                   "curvyness": 50,
-                  "selectedColor": "rgb(0,192,255)"
+                  "selectedColor": "orange"
               },
               "195b3994-8a46-4c2b-99a2-57fac3d1f5aa": {
                   "id": "195b3994-8a46-4c2b-99a2-57fac3d1f5aa",
@@ -1257,9 +1257,9 @@
                   ],
                   "labels": [],
                   "width": 3,
-                  "color": "gray",
+                  "color": "orange",
                   "curvyness": 50,
-                  "selectedColor": "rgb(0,192,255)"
+                  "selectedColor": "orange"
               },
               "e526ca0b-fdd8-4d3a-ab5c-dc179f4ae2da": {
                   "id": "e526ca0b-fdd8-4d3a-ab5c-dc179f4ae2da",
@@ -1653,9 +1653,9 @@
                   ],
                   "labels": [],
                   "width": 3,
-                  "color": "gray",
+                  "color": "orange",
                   "curvyness": 50,
-                  "selectedColor": "rgb(0,192,255)"
+                  "selectedColor": "orange"
               },
               "cd8a8726-4a6e-4e0f-a0fc-2ecb8e5417cc": {
                   "id": "cd8a8726-4a6e-4e0f-a0fc-2ecb8e5417cc",
@@ -1705,9 +1705,9 @@
                   ],
                   "labels": [],
                   "width": 3,
-                  "color": "gray",
+                  "color": "orange",
                   "curvyness": 50,
-                  "selectedColor": "rgb(0,192,255)"
+                  "selectedColor": "orange"
               },
               "d9cad09d-4e58-4dff-8354-47895eb9de7d": {
                   "id": "d9cad09d-4e58-4dff-8354-47895eb9de7d",
@@ -1745,9 +1745,9 @@
                   ],
                   "labels": [],
                   "width": 3,
-                  "color": "gray",
+                  "color": "orange",
                   "curvyness": 50,
-                  "selectedColor": "rgb(0,192,255)"
+                  "selectedColor": "orange"
               },
               "0da841a3-8ef9-443c-98d3-be98634079f3": {
                   "id": "0da841a3-8ef9-443c-98d3-be98634079f3",
@@ -1785,9 +1785,9 @@
                   ],
                   "labels": [],
                   "width": 3,
-                  "color": "gray",
+                  "color": "orange",
                   "curvyness": 50,
-                  "selectedColor": "rgb(0,192,255)"
+                  "selectedColor": "orange"
               },
               "7b51a45c-e635-479a-8b1b-3c0a3f9bbfe1": {
                   "id": "7b51a45c-e635-479a-8b1b-3c0a3f9bbfe1",
@@ -1837,9 +1837,9 @@
                   ],
                   "labels": [],
                   "width": 3,
-                  "color": "gray",
+                  "color": "orange",
                   "curvyness": 50,
-                  "selectedColor": "rgb(0,192,255)"
+                  "selectedColor": "orange"
               },
               "938a262c-3a5f-4fe0-974e-ecc54082ef75": {
                   "id": "938a262c-3a5f-4fe0-974e-ecc54082ef75",
@@ -2360,7 +2360,7 @@
                       }
                   ],
                   "name": "control",
-                  "color": "rgb(0,192,255)",
+                  "color": "orange",
                   "portsInOrder": [
                       "070290eb-d6c7-4366-852f-1e08341e5776"
                   ],
@@ -2819,7 +2819,7 @@
                       }
                   ],
                   "name": "ALUControl",
-                  "color": "rgb(0,192,255)",
+                  "color": "orange",
                   "portsInOrder": [
                       "454642bb-dfc3-41b3-a7cb-02776fa017ac",
                       "05634608-76e2-400c-88e9-8f2a37a1d0a6"
@@ -3299,7 +3299,7 @@
                       }
                   ],
                   "name": "and",
-                  "color": "rgb(0,192,255)",
+                  "color": "orange",
                   "portsInOrder": [
                       "d2b17dcc-8b74-44cc-baf5-cd2ce4bd2cea",
                       "5ba9b9af-1bf5-4a8a-8d0e-4fc5e5245bc9"
