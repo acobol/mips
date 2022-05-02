@@ -1,19 +1,19 @@
 import { CanvasWidget } from "@projectstorm/react-canvas-core";
 import React from "react";
-import MultiplexorModel from "./Models/Multiplexor/MultiplexorModel";
-import ALUModel from "./Models/ALU/ALUModel";
-import RegistryBankModel from "./Models/RegistryBank/RegistryBankModel";
-import MemoryBankModel from "./Models/MemoryBank/MemoryBankModel";
-import SignExtensorModel from "./Models/SignExtend/SignExtendModel";
-import InstructionsMemoryModel from "./Models/InstructionsMemory/InstructionsMemoryModel";
-import PCModel from './Models/PC/PCModel';
-import AddModel from "./Models/Add/AddModel";
-import ConstModel from "./Models/Const/ConstModel";
-import ShiftLeftModel from "./Models/ShiftLeft/ShiftLeftModel";
-import ALUControlModel from "./Models/ALUControl/ALUControlModel";
-import AndModel from "./Models/And/AndModel";
-import ControlModel from "./Models/Control/ControlModel";
-import ConcatenatorModel from "./Models/Concatenator/ConcatenatorModel";
+import MultiplexorModel from "./DataPathElements/Multiplexor/MultiplexorModel";
+import ALUModel from "./DataPathElements/ALU/ALUModel";
+import RegistryBankModel from "./DataPathElements/RegistryBank/RegistryBankModel";
+import MemoryBankModel from "./DataPathElements/MemoryBank/MemoryBankModel";
+import SignExtensorModel from "./DataPathElements/SignExtend/SignExtendModel";
+import InstructionsMemoryModel from "./DataPathElements/InstructionsMemory/InstructionsMemoryModel";
+import PCModel from './DataPathElements/PC/PCModel';
+import AddModel from "./DataPathElements/Add/AddModel";
+import ConstModel from "./DataPathElements/Const/ConstModel";
+import ShiftLeftModel from "./DataPathElements/ShiftLeft/ShiftLeftModel";
+import ALUControlModel from "./DataPathElements/ALUControl/ALUControlModel";
+import AndModel from "./DataPathElements/And/AndModel";
+import ControlModel from "./DataPathElements/Control/ControlModel";
+import ConcatenatorModel from "./DataPathElements/Concatenator/ConcatenatorModel";
 
 const models = {
   'ALU': ALUModel,

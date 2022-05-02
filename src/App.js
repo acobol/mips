@@ -2,20 +2,20 @@ import './App.css';
 import Stencil from './stencil';
 import Canvas from './canvas';
 import createEngine, {DiagramModel, RightAngleLinkFactory, RightAngleLinkModel, DefaultPortModel} from '@projectstorm/react-diagrams';
-import MultiplexorFactory from './Models/Multiplexor/MultiplexorFactory';
-import ALUFactory from './Models/ALU/ALUFactory';
-import RegistryBankFactory from './Models/RegistryBank/RegistryBankFactory';
-import MemoryBankFactory from './Models/MemoryBank/MemoryBankFactory';
-import SignExtensorFactory from './Models/SignExtend/SignExtendFactory';
-import InstructionsMemoryFactory from './Models/InstructionsMemory/InstructionsMemoryFactory';
-import PCFactory from './Models/PC/PCFactory';
-import AddFactory from './Models/Add/AddFactory';
-import ConstFactory from './Models/Const/ConstFactory';
-import ShiftLeftFactory from './Models/ShiftLeft/ShiftLeftFactory';
-import ALUControlFactory from './Models/ALUControl/ALUControlFactory';
-import AndFactory from './Models/And/AndFactory';
-import ControlFactory from './Models/Control/ControlFactory';
-import ConcatenatorFactory from './Models/Concatenator/ConcatenatorFactory';
+import MultiplexorFactory from './DataPathElements/Multiplexor/MultiplexorFactory';
+import ALUFactory from './DataPathElements/ALU/ALUFactory';
+import RegistryBankFactory from './DataPathElements/RegistryBank/RegistryBankFactory';
+import MemoryBankFactory from './DataPathElements/MemoryBank/MemoryBankFactory';
+import SignExtensorFactory from './DataPathElements/SignExtend/SignExtendFactory';
+import InstructionsMemoryFactory from './DataPathElements/InstructionsMemory/InstructionsMemoryFactory';
+import PCFactory from './DataPathElements/PC/PCFactory';
+import AddFactory from './DataPathElements/Add/AddFactory';
+import ConstFactory from './DataPathElements/Const/ConstFactory';
+import ShiftLeftFactory from './DataPathElements/ShiftLeft/ShiftLeftFactory';
+import ALUControlFactory from './DataPathElements/ALUControl/ALUControlFactory';
+import AndFactory from './DataPathElements/And/AndFactory';
+import ControlFactory from './DataPathElements/Control/ControlFactory';
+import ConcatenatorFactory from './DataPathElements/Concatenator/ConcatenatorFactory';
 import datapath from './datapath.json';
 import { AbstractModelFactory } from '@projectstorm/react-canvas-core';
 
@@ -43,7 +43,7 @@ export class RightAnglePortModel extends DefaultPortModel {
   }
 
 	createLinkModel(factory) {
-		return new RightAngleLinkModel();
+		return new RightAngleLinkModel({color: 'orange', selectedColor: 'orange'});
 	}
 }
 
@@ -66,6 +66,8 @@ function App() {
   engine.getLinkFactories().registerFactory(new RightAngleLinkFactory());
   engine.getPortFactories().registerFactory(new RightAnglePortFactory());
   const diagram = new DiagramModel();
+  engine.getStateMachine().getCurrentState().dragNewLink.config.allowLooseLinks = false;
+  debugger;
   diagram.deserializeModel(datapath, engine);
   engine.setModel(diagram);
   return (
