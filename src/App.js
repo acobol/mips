@@ -17,7 +17,8 @@ import AndFactory from './DataPathElements/And/AndFactory';
 import ControlFactory from './DataPathElements/Control/ControlFactory';
 import ConcatenatorFactory from './DataPathElements/Concatenator/ConcatenatorFactory';
 import datapath from './datapath.json';
-import RightAnglePortFactory from './Ports/RigthAnglePort/RightAnglePortFactory';
+import OutPortFactory from './Ports/OutPort/OutPortFactory';
+import InPortFactory from './Ports/InPort/InPortFactory';
 
 const nodeFactories = [
   MultiplexorFactory,
@@ -41,7 +42,8 @@ const linkFactories = [
 ];
 
 const portFactories = [
-  RightAnglePortFactory
+  OutPortFactory,
+  InPortFactory
 ];
 
 function App() {
@@ -57,7 +59,6 @@ function App() {
   }
   const diagram = new DiagramModel();
   engine.getStateMachine().getCurrentState().dragNewLink.config.allowLooseLinks = false;
-  debugger;
   diagram.deserializeModel(datapath, engine);
   engine.setModel(diagram);
   return (

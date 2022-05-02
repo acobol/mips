@@ -1,16 +1,15 @@
-import { DefaultNodeModel } from "@projectstorm/react-diagrams";
-import RightAnglePortModel from "../../Ports/RigthAnglePort/RightAnglePortModel";
+import ElementNode from "../../Nodes/ElementNode";
 
-class RegistryBankModel extends DefaultNodeModel {
+class RegistryBankModel extends ElementNode {
   constructor(name = "registryBank") {
     super({name, type: 'registryBank'});
-    this.addPort(new RightAnglePortModel(false, 'ReadData1', 'ReadData1'));
-    this.addPort(new RightAnglePortModel(false, 'ReadData2', 'ReadData2'));
-    this.addInPort('RegWrite', 'RegWrite');
-    this.addInPort('ReadRegister1', 'ReadRegister1');
-    this.addInPort('ReadRegister2', 'ReadRegister2');
-    this.addInPort('WriteRegister', 'WriteRegister');
-    this.addInPort('WriteData', 'WriteData');
+    this.addOutPort('ReadData1');
+    this.addOutPort('ReadData2');
+    this.addInPort('RegWrite');
+    this.addInPort('ReadRegister1');
+    this.addInPort('ReadRegister2');
+    this.addInPort('WriteRegister');
+    this.addInPort('WriteData');
   }
 }
 

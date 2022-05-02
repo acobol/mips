@@ -1,11 +1,10 @@
-import { DefaultNodeModel } from "@projectstorm/react-diagrams";
-import RightAnglePortModel from "../../Ports/RigthAnglePort/RightAnglePortModel";
+import ElementNode from "../../Nodes/ElementNode";
 
-class SignExtensorModel extends DefaultNodeModel {
+class SignExtensorModel extends ElementNode {
   constructor(name = "signExtend") {
     super({name, type: 'signExtend'});
-    this.addPort(new RightAnglePortModel(false, 'out', 'out'));
-    this.addInPort('signal', 'signal');
+    this.addOutPort('out');
+    this.addInPort('signal');
   }
 }
 

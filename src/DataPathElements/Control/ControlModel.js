@@ -1,19 +1,18 @@
-import { DefaultNodeModel } from "@projectstorm/react-diagrams";
-import RightAnglePortModel from "../../Ports/RigthAnglePort/RightAnglePortModel";
+import ElementNode from "../../Nodes/ElementNode";
 
-class ControlModel extends DefaultNodeModel {
+class ControlModel extends ElementNode {
   constructor(name = "control") {
     super({name, type: 'control'});
-    this.addInPort('instruction', 'instruction');
-    this.addPort(new RightAnglePortModel(false, 'regdest', 'regdest'));
-    this.addPort(new RightAnglePortModel(false, 'ALUSrc', 'ALUSrc'));
-    this.addPort(new RightAnglePortModel(false, 'jump', 'jump'));
-    this.addPort(new RightAnglePortModel(false, 'branch', 'branch'));
-    this.addPort(new RightAnglePortModel(false, 'memread', 'memread'));
-    this.addPort(new RightAnglePortModel(false, 'mentoreg', 'memtoreg'));
-    this.addPort(new RightAnglePortModel(false, 'ALUOp', 'ALUOp'));
-    this.addPort(new RightAnglePortModel(false, 'memwrite', 'memwrite'));
-    this.addPort(new RightAnglePortModel(false, 'regwrite', 'regwrite'));
+    this.addInPort('instruction');
+    this.addOutPort('regdest');
+    this.addOutPort('ALUSrc');
+    this.addOutPort('jump');
+    this.addOutPort('branch');
+    this.addOutPort('memread');
+    this.addOutPort('memtoreg');
+    this.addOutPort('ALUOp');
+    this.addOutPort('memwrite');
+    this.addOutPort('regwrite');
   }
 }
 

@@ -1910,7 +1910,7 @@
                   "ports": [
                       {
                           "id": "6dd3463a-9f50-4bf0-b3bc-a9a6054e4355",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 315.48433027747313,
                           "y": 626.0000091080291,
                           "name": "pc",
@@ -1925,7 +1925,7 @@
                       },
                       {
                           "id": "71d6edf2-b97c-4bee-948a-a3491502ae95",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 222.15626210330825,
                           "y": 626.0000091080291,
                           "name": "counter",
@@ -1956,7 +1956,7 @@
                   "ports": [
                       {
                           "id": "c484ee87-1fd5-44d7-a599-2faf432f5ef7",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 685.2656349986477,
                           "y": 626.0000091080291,
                           "name": "Instruction",
@@ -1977,7 +1977,7 @@
                       },
                       {
                           "id": "17a4c5c8-deaf-4b8c-9416-faf6132cd307",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 549.15626841729,
                           "y": 626.0000091080291,
                           "name": "Address",
@@ -2008,7 +2008,7 @@
                   "ports": [
                       {
                           "id": "dc534c30-ceda-4835-9bd3-5ae499357406",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 672.5468765800055,
                           "y": 120.99998806142354,
                           "name": "result",
@@ -2024,7 +2024,7 @@
                       },
                       {
                           "id": "8e53d2f3-3e7d-4c54-8694-44fb71aa42e5",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 576.1562431613632,
                           "y": 120.99998806142354,
                           "name": "add1",
@@ -2038,7 +2038,7 @@
                       },
                       {
                           "id": "2d835ad6-af9c-40a1-b22b-2724b836a8cb",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 576.1562431613632,
                           "y": 136.9999964800658,
                           "name": "add2",
@@ -2070,7 +2070,7 @@
                   "ports": [
                       {
                           "id": "5bb68b12-68c2-4ddd-8f1d-5efa10a284dc",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 488.06249737068435,
                           "y": 214.9999901660841,
                           "name": "result",
@@ -2099,7 +2099,7 @@
                   "ports": [
                       {
                           "id": "b38b080e-acd6-4698-add8-518cae5c7b4d",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1124.1874384401885,
                           "y": 610.0000006893869,
                           "name": "ReadData1",
@@ -2113,7 +2113,7 @@
                       },
                       {
                           "id": "c090239c-9fa7-46a0-be9f-25535f60953c",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1124.1874384401885,
                           "y": 626.0000091080291,
                           "name": "ReadData2",
@@ -2128,7 +2128,7 @@
                       },
                       {
                           "id": "cf2efce5-8f64-4b4a-ada8-5900cbd7dc30",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 950.1561716029041,
                           "y": 610.0000006893869,
                           "name": "RegWrite",
@@ -2142,7 +2142,7 @@
                       },
                       {
                           "id": "d6f55bbd-6e5e-4f46-a979-209832c67cbf",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 950.1561716029041,
                           "y": 626.0000091080291,
                           "name": "ReadRegister1",
@@ -2156,7 +2156,7 @@
                       },
                       {
                           "id": "2325bbe1-5db5-4fc3-96a0-bb69883ab1d3",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 950.1561716029041,
                           "y": 642.0000175266714,
                           "name": "ReadRegister2",
@@ -2170,7 +2170,7 @@
                       },
                       {
                           "id": "64aadca7-3c77-4424-8f72-83049a996ced",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 950.1561716029041,
                           "y": 658.0000259453136,
                           "name": "WriteRegister",
@@ -2184,7 +2184,7 @@
                       },
                       {
                           "id": "63a8935a-cf15-4057-8ce9-8c6378c295b6",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 950.1561716029041,
                           "y": 673.999971224139,
                           "name": "WriteData",
@@ -2220,7 +2220,7 @@
                   "ports": [
                       {
                           "id": "070290eb-d6c7-4366-852f-1e08341e5776",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 956.1562221147576,
                           "y": 299.9999796427813,
                           "name": "instruction",
@@ -2234,7 +2234,7 @@
                       },
                       {
                           "id": "915b591c-979e-4401-b499-634f4ca4dab1",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1100.8281055333998,
                           "y": 299.9999796427813,
                           "name": "regdest",
@@ -2248,7 +2248,7 @@
                       },
                       {
                           "id": "e66bd730-9c67-44d4-ab1f-d6d1608ca7c9",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1100.8281055333998,
                           "y": 315.9999880614235,
                           "name": "ALUSrc",
@@ -2262,7 +2262,7 @@
                       },
                       {
                           "id": "ba3eff9d-b6e8-4dac-af78-ef7bca3bb3af",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1100.8281055333998,
                           "y": 331.99999648006576,
                           "name": "jump",
@@ -2276,7 +2276,7 @@
                       },
                       {
                           "id": "d5809a20-2567-4931-bb37-7cef02b93182",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1100.8281055333998,
                           "y": 348.00000489870797,
                           "name": "branch",
@@ -2290,7 +2290,7 @@
                       },
                       {
                           "id": "29cf561f-c18a-4a5c-823a-0c88bc553e44",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1100.8281055333998,
                           "y": 364.00001331735024,
                           "name": "memread",
@@ -2304,7 +2304,7 @@
                       },
                       {
                           "id": "e029861b-7409-4e06-9cd7-852463a87d47",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1100.8281055333998,
                           "y": 380.00002173599245,
                           "name": "mentoreg",
@@ -2318,7 +2318,7 @@
                       },
                       {
                           "id": "41daadca-5a9f-487e-95e4-1a69f98e770f",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1100.8281055333998,
                           "y": 395.9999670148179,
                           "name": "ALUOp",
@@ -2332,7 +2332,7 @@
                       },
                       {
                           "id": "9a61dd40-dd2b-4247-aad7-34d4af4f347e",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1100.8281055333998,
                           "y": 411.9999754334601,
                           "name": "memwrite",
@@ -2346,7 +2346,7 @@
                       },
                       {
                           "id": "e658b57c-848a-458c-b8cb-a87ae713ea2e",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1100.8281055333998,
                           "y": 427.9999838521024,
                           "name": "regwrite",
@@ -2385,7 +2385,7 @@
                   "ports": [
                       {
                           "id": "5c5e1b36-53b3-490a-8bf6-839552d75e3d",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 900.2031055333998,
                           "y": -19.00000667692506,
                           "name": "out",
@@ -2399,7 +2399,7 @@
                       },
                       {
                           "id": "59d50fa2-a7c3-4695-bf9b-b50bc70d11c5",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 811.1562642079688,
                           "y": -19.00000667692506,
                           "name": "signal",
@@ -2430,7 +2430,7 @@
                   "ports": [
                       {
                           "id": "fec655cd-7948-4175-81b1-954126683015",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1058.5780971147576,
                           "y": -21.00000772925534,
                           "name": "out",
@@ -2444,7 +2444,7 @@
                       },
                       {
                           "id": "430c09ef-f9c2-4b18-bf36-0a552c86de40",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 992.1562726266111,
                           "y": -21.00000772925534,
                           "name": "a",
@@ -2458,7 +2458,7 @@
                       },
                       {
                           "id": "8670a3a4-5f61-4410-b71e-6439401c198b",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 992.1562726266111,
                           "y": -4.9999993106131,
                           "name": "b",
@@ -2490,7 +2490,7 @@
                   "ports": [
                       {
                           "id": "e64d1e29-f3a0-436a-9a1c-52e131a20846",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 912.2030802774731,
                           "y": 746.0000091080291,
                           "name": "out",
@@ -2504,7 +2504,7 @@
                       },
                       {
                           "id": "ac0f2c1c-e4de-41c6-be5d-f7b2e0f9eb30",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 823.1562389520421,
                           "y": 746.0000091080291,
                           "name": "signal",
@@ -2518,7 +2518,7 @@
                       },
                       {
                           "id": "37629198-3b59-4fd4-bedd-ed8a552121db",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 823.1562389520421,
                           "y": 762.0000175266714,
                           "name": "in0",
@@ -2532,7 +2532,7 @@
                       },
                       {
                           "id": "b9ae5a71-f1a7-4128-a7cb-d7327a33d555",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 823.1562389520421,
                           "y": 778.0000259453136,
                           "name": "in1",
@@ -2565,7 +2565,7 @@
                   "ports": [
                       {
                           "id": "8d8c1e7c-a00e-494f-93f4-50e0b78ca635",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1337.156272626611,
                           "y": 610.0000006893869,
                           "name": "reg1",
@@ -2579,7 +2579,7 @@
                       },
                       {
                           "id": "5091bf30-8ecf-4ce8-9f21-9104e0790a4e",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1337.156272626611,
                           "y": 626.0000091080291,
                           "name": "reg2",
@@ -2593,7 +2593,7 @@
                       },
                       {
                           "id": "fa240fdd-050a-4a05-b0b7-b39bedb4cd05",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1337.156272626611,
                           "y": 642.0000175266714,
                           "name": "ALUOp",
@@ -2607,7 +2607,7 @@
                       },
                       {
                           "id": "60430ca6-7d0d-40bc-ab8d-6e7f2445552a",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1445.140639207969,
                           "y": 610.0000006893869,
                           "name": "result",
@@ -2622,7 +2622,7 @@
                       },
                       {
                           "id": "c30fcb91-9a7d-4019-b0e3-2bd85beda4dd",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1445.140639207969,
                           "y": 626.0000091080291,
                           "name": "zero",
@@ -2656,7 +2656,7 @@
                   "ports": [
                       {
                           "id": "0291efe6-63fd-4ad9-a6b8-b2d0ddc871ab",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1291.203113952042,
                           "y": 655.0000006893869,
                           "name": "out",
@@ -2670,7 +2670,7 @@
                       },
                       {
                           "id": "ac342682-7811-4c9d-9775-b131fffec9f9",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1202.156272626611,
                           "y": 655.0000006893869,
                           "name": "signal",
@@ -2684,7 +2684,7 @@
                       },
                       {
                           "id": "1f2274a5-1961-4cdd-9209-f564e9cd9132",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1202.156272626611,
                           "y": 671.0000091080291,
                           "name": "in0",
@@ -2698,7 +2698,7 @@
                       },
                       {
                           "id": "99881c83-5c7f-4c67-b098-03ecf08ee446",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1202.156272626611,
                           "y": 687.0000175266714,
                           "name": "in1",
@@ -2731,7 +2731,7 @@
                   "ports": [
                       {
                           "id": "71db1dd9-0802-4b9f-ac8e-acd17218d7a4",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1110.2031055333998,
                           "y": 925.0000006893869,
                           "name": "out",
@@ -2746,7 +2746,7 @@
                       },
                       {
                           "id": "f30751d4-f07c-40b6-b634-84cb8cceb65b",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1021.1562642079688,
                           "y": 925.0000006893869,
                           "name": "signal",
@@ -2777,7 +2777,7 @@
                   "ports": [
                       {
                           "id": "70874786-3ec9-45d4-9088-28f1234dd0aa",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1444.171821858831,
                           "y": 1041.9999754334601,
                           "name": "operation",
@@ -2791,7 +2791,7 @@
                       },
                       {
                           "id": "454642bb-dfc3-41b3-a7cb-02776fa017ac",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1303.156238952042,
                           "y": 1041.9999754334601,
                           "name": "instruction",
@@ -2805,7 +2805,7 @@
                       },
                       {
                           "id": "05634608-76e2-400c-88e9-8f2a37a1d0a6",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1303.156238952042,
                           "y": 1057.9999838521023,
                           "name": "aluop",
@@ -2837,7 +2837,7 @@
                   "ports": [
                       {
                           "id": "c7a8b56a-a355-4cb0-afac-d42ecfcca1d7",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1674.1562052774732,
                           "y": 577.9999838521023,
                           "name": "Data",
@@ -2851,7 +2851,7 @@
                       },
                       {
                           "id": "8daacffa-c3bb-4e62-8209-15b59c34f9d8",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1555.1562136961154,
                           "y": 577.9999838521023,
                           "name": "MemWrite",
@@ -2865,7 +2865,7 @@
                       },
                       {
                           "id": "5cf5502d-6f0f-4f4e-a1c3-959a1fe82d7d",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1555.1562136961154,
                           "y": 593.9999922707447,
                           "name": "MemRead",
@@ -2879,7 +2879,7 @@
                       },
                       {
                           "id": "0102d019-29ce-4025-8ced-f774cd4a5a92",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1555.1562136961154,
                           "y": 610.0000006893869,
                           "name": "Address",
@@ -2893,7 +2893,7 @@
                       },
                       {
                           "id": "a030d509-3f0d-48da-8b20-1ef0c204917e",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1555.1562136961154,
                           "y": 626.0000091080291,
                           "name": "WriteData",
@@ -2927,7 +2927,7 @@
                   "ports": [
                       {
                           "id": "d4732612-3f6e-43c5-88bc-ab866595632e",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1904.2030971147576,
                           "y": 620.0000217359925,
                           "name": "out",
@@ -2941,7 +2941,7 @@
                       },
                       {
                           "id": "d177c1e9-3453-46ee-9122-4e3044e5f74f",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1815.1562557893267,
                           "y": 620.0000217359925,
                           "name": "signal",
@@ -2955,7 +2955,7 @@
                       },
                       {
                           "id": "22ffe06f-ae13-4d01-863c-6fd618e1b00d",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1815.1562557893267,
                           "y": 635.9999670148179,
                           "name": "in0",
@@ -2969,7 +2969,7 @@
                       },
                       {
                           "id": "b3cf9822-7d7d-442d-a12c-4e6dd698b8b0",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1815.1562557893267,
                           "y": 651.9999754334601,
                           "name": "in1",
@@ -3002,7 +3002,7 @@
                   "ports": [
                       {
                           "id": "fdff8232-ecb6-4769-8eef-3f577dabc158",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1278.2031307893267,
                           "y": 155.99999858472634,
                           "name": "out",
@@ -3016,7 +3016,7 @@
                       },
                       {
                           "id": "1a4908d6-d252-4273-ac2e-38a174dd90ea",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1189.1562894638955,
                           "y": 155.99999858472634,
                           "name": "signal",
@@ -3047,7 +3047,7 @@
                   "ports": [
                       {
                           "id": "dc18192a-e0c5-4d6f-b29a-0fe2564ecfea",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1415.5468807893267,
                           "y": 57.999994375405215,
                           "name": "result",
@@ -3061,7 +3061,7 @@
                       },
                       {
                           "id": "ac96eceb-f81a-45c6-921a-d755d7fb0f60",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1319.1562473706842,
                           "y": 57.999994375405215,
                           "name": "add1",
@@ -3075,7 +3075,7 @@
                       },
                       {
                           "id": "b2fb003c-1f77-44a9-b6c5-5930e4f7a080",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1319.1562473706842,
                           "y": 74.00000279404746,
                           "name": "add2",
@@ -3107,7 +3107,7 @@
                   "ports": [
                       {
                           "id": "d73ad64c-67f5-40aa-9700-c645c7a0a730",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1604.2030971147576,
                           "y": -6.000007729255342,
                           "name": "out",
@@ -3121,7 +3121,7 @@
                       },
                       {
                           "id": "cd7e4ce9-9a86-4242-9b00-4e092f268b87",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1515.1562557893267,
                           "y": -6.000007729255342,
                           "name": "signal",
@@ -3135,7 +3135,7 @@
                       },
                       {
                           "id": "290b2287-bf61-46bf-b060-faadb0d93f26",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1515.1562557893267,
                           "y": 10.0000006893869,
                           "name": "in0",
@@ -3149,7 +3149,7 @@
                       },
                       {
                           "id": "af2e4c97-512b-423e-9901-ce7ff321ce58",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1515.1562557893267,
                           "y": 25.99999332307494,
                           "name": "in1",
@@ -3182,7 +3182,7 @@
                   "ports": [
                       {
                           "id": "17463a4b-44e9-4f6d-8911-37b0eee9fb40",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1894.2030129283353,
                           "y": -64.9999993106131,
                           "name": "out",
@@ -3196,7 +3196,7 @@
                       },
                       {
                           "id": "3957ba8b-f351-4539-88c7-0136c895c769",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1805.1562978825377,
                           "y": -64.9999993106131,
                           "name": "signal",
@@ -3210,7 +3210,7 @@
                       },
                       {
                           "id": "40d5bf6a-091f-4978-baf4-bb3307276bb1",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1805.1562978825377,
                           "y": -49.00000667692506,
                           "name": "in0",
@@ -3224,7 +3224,7 @@
                       },
                       {
                           "id": "d567a5de-6b8e-4458-bdae-3f0f504fd757",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1805.1562978825377,
                           "y": -32.99999825828282,
                           "name": "in1",
@@ -3257,7 +3257,7 @@
                   "ports": [
                       {
                           "id": "18bf2622-0915-40e0-b4cd-9235f1c231e6",
-                          "type": "rightAnglePort",
+                          "type": "outPort",
                           "x": 1655.5468807893267,
                           "y": 215.99999858472634,
                           "name": "result",
@@ -3271,7 +3271,7 @@
                       },
                       {
                           "id": "d2b17dcc-8b74-44cc-baf5-cd2ce4bd2cea",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1559.1562473706842,
                           "y": 215.99999858472634,
                           "name": "add1",
@@ -3285,7 +3285,7 @@
                       },
                       {
                           "id": "5ba9b9af-1bf5-4a8a-8d0e-4fc5e5245bc9",
-                          "type": "default",
+                          "type": "inPort",
                           "x": 1559.1562473706842,
                           "y": 232.00000700336858,
                           "name": "add2",

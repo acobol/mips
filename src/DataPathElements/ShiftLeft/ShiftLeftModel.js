@@ -1,11 +1,10 @@
-import { DefaultNodeModel } from "@projectstorm/react-diagrams";
-import RightAnglePortModel from "../../Ports/RigthAnglePort/RightAnglePortModel";
+import ElementNode from "../../Nodes/ElementNode";
 
-class ShiftLeftModel extends DefaultNodeModel {
+class ShiftLeftModel extends ElementNode {
   constructor(name = "shiftLeft") {
     super({name, type: 'shiftLeft'});
-    this.addPort(new RightAnglePortModel(false, 'out', 'out'));
-    this.addInPort('signal', 'signal');
+    this.addOutPort('out');
+    this.addInPort('signal');
   }
 }
 

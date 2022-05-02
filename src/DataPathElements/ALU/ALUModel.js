@@ -1,14 +1,13 @@
-import { DefaultNodeModel } from "@projectstorm/react-diagrams";
-import RightAnglePortModel from "../../Ports/RigthAnglePort/RightAnglePortModel";
+import ElementNode from "../../Nodes/ElementNode";
 
-class ALUModel extends DefaultNodeModel {
+class ALUModel extends ElementNode {
   constructor(name = "ALU") {
     super({name, type: 'ALU'});
-    this.addInPort('reg1', 'reg1');
-    this.addInPort('reg2', 'reg2');
-    this.addInPort('ALUOp', 'ALUOp');
-    this.addPort(new RightAnglePortModel(false, 'result', 'result'));
-    this.addPort(new RightAnglePortModel(false, 'zero', 'zero'));
+    this.addInPort('reg1');
+    this.addInPort('reg2');
+    this.addInPort('ALUOp');
+    this.addOutPort('result');
+    this.addOutPort('zero');
   }
 }
 

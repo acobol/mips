@@ -1,11 +1,10 @@
-import { DefaultNodeModel } from "@projectstorm/react-diagrams";
-import RightAnglePortModel from "../../Ports/RigthAnglePort/RightAnglePortModel";
+import ElementNode from "../../Nodes/ElementNode";
 
-class MultiplexorModel extends DefaultNodeModel {
+class MultiplexorModel extends ElementNode {
   constructor(name = "multiplexor", signalBits = 1) {
     super({name, type: 'multiplexor'});
-    this.addPort(new RightAnglePortModel(false, 'out', 'out'));
-    this.addInPort('signal', 'signal');
+    this.addOutPort('out');
+    this.addInPort('signal');
     for(let i = 0; i < 2 ** signalBits; i++) {
       const portName = `in${i}`;
       this.addInPort(portName, portName);

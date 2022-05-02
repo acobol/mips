@@ -1,10 +1,9 @@
-import { DefaultNodeModel } from "@projectstorm/react-diagrams";
-import RightAnglePortModel from "../../Ports/RigthAnglePort/RightAnglePortModel";
+import ElementNode from "../../Nodes/ElementNode";
 
-class ConstModel extends DefaultNodeModel {
+class ConstModel extends ElementNode {
   constructor(name = "const") {
     super({name, type: 'const'});
-    this.addPort(new RightAnglePortModel(false, 'result', 'result'));
+    this.addOutPort('result');
   }
 }
 

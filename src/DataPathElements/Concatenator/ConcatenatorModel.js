@@ -1,12 +1,11 @@
-import { DefaultNodeModel } from "@projectstorm/react-diagrams";
-import RightAnglePortModel from "../../Ports/RigthAnglePort/RightAnglePortModel";
+import ElementNode from "../../Nodes/ElementNode";
 
-class ConcatenatorModel extends DefaultNodeModel {
+class ConcatenatorModel extends ElementNode {
   constructor(name = "concatenator") {
     super({name, type: 'concatenator'});
-    this.addPort(new RightAnglePortModel(false, 'out', 'out'));
-    this.addInPort('a', 'a');
-    this.addInPort('b', 'b');
+    this.addOutPort('out');
+    this.addInPort('a');
+    this.addInPort('b');
   }
 }
 
