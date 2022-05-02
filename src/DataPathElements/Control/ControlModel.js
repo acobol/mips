@@ -2,7 +2,7 @@ import ElementNode from "../../Nodes/ElementNode";
 
 class ControlModel extends ElementNode {
   constructor(name = "control") {
-    super({name, type: 'control'});
+    super({name, type: 'control', color: 'orange'});
     this.addInPort('instruction');
     this.addOutPort('regdest');
     this.addOutPort('ALUSrc');
