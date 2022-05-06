@@ -1,15 +1,17 @@
-import {RightAngleLinkModel, DefaultPortModel} from '@projectstorm/react-diagrams';
+import {DefaultPortModel} from '@projectstorm/react-diagrams';
+import BitsLinkModel from '../../Links/BitsLinkModel';
 
 export class OutPortModel extends DefaultPortModel {
-  constructor(options) {
+  constructor(options, bitsNumber = 32) {
     super({
       ...options,
       type: 'outPort'
-    })
+    });
+    this.bitsNumber = bitsNumber;
   }
 
 	createLinkModel(factory) {
-		return new RightAngleLinkModel();
+    return new BitsLinkModel({}, this.bitsNumber);
 	}
 }
 

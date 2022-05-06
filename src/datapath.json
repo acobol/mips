@@ -13,7 +13,7 @@
           "models": {
               "d4c64d02-3e97-4fca-b8e4-c630fbf1c39e": {
                   "id": "d4c64d02-3e97-4fca-b8e4-c630fbf1c39e",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "0b944b51-90d6-49d2-82ab-ae495ad3c51a",
                   "sourcePort": "6dd3463a-9f50-4bf0-b3bc-a9a6054e4355",
@@ -53,7 +53,7 @@
               },
               "c8a3c1b4-0046-4e3d-b049-54e0a141f8d6": {
                   "id": "c8a3c1b4-0046-4e3d-b049-54e0a141f8d6",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "4698e289-141b-4d2d-97e0-e07204470fd1",
                   "sourcePort": "5bb68b12-68c2-4ddd-8f1d-5efa10a284dc",
@@ -93,7 +93,7 @@
               },
               "ffffdbb1-0815-4c7a-b98e-96ed913ef582": {
                   "id": "ffffdbb1-0815-4c7a-b98e-96ed913ef582",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "0b944b51-90d6-49d2-82ab-ae495ad3c51a",
                   "sourcePort": "6dd3463a-9f50-4bf0-b3bc-a9a6054e4355",
@@ -133,7 +133,7 @@
               },
               "b342343d-99ff-4570-b750-c9a669ffe9af": {
                   "id": "b342343d-99ff-4570-b750-c9a669ffe9af",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "510b74a8-937a-4645-b242-9fdb042f2b5f",
                   "sourcePort": "c484ee87-1fd5-44d7-a599-2faf432f5ef7",
@@ -173,7 +173,7 @@
               },
               "906db38b-f604-4882-8302-7d9d784799f2": {
                   "id": "906db38b-f604-4882-8302-7d9d784799f2",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "0ff10983-af36-47d6-9be3-417347fdfe22",
                   "sourcePort": "5c5e1b36-53b3-490a-8bf6-839552d75e3d",
@@ -213,7 +213,7 @@
               },
               "7ec2345c-665d-4c54-8c9c-adc7a1d44c6b": {
                   "id": "7ec2345c-665d-4c54-8c9c-adc7a1d44c6b",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "38cdcdc9-4a6a-45e3-8dcf-9493d16a675d",
                   "sourcePort": "dc534c30-ceda-4835-9bd3-5ae499357406",
@@ -265,7 +265,7 @@
               },
               "b59aa7a3-4e15-4b2c-82ba-8013d3aff504": {
                   "id": "b59aa7a3-4e15-4b2c-82ba-8013d3aff504",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "510b74a8-937a-4645-b242-9fdb042f2b5f",
                   "sourcePort": "c484ee87-1fd5-44d7-a599-2faf432f5ef7",
@@ -305,7 +305,7 @@
               },
               "0d9e1838-43c7-4929-b3b8-7dc6d624cfae": {
                   "id": "0d9e1838-43c7-4929-b3b8-7dc6d624cfae",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "510b74a8-937a-4645-b242-9fdb042f2b5f",
                   "sourcePort": "c484ee87-1fd5-44d7-a599-2faf432f5ef7",
@@ -345,7 +345,7 @@
               },
               "6c81fcec-becf-4a15-8373-59f0a72a853e": {
                   "id": "6c81fcec-becf-4a15-8373-59f0a72a853e",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "510b74a8-937a-4645-b242-9fdb042f2b5f",
                   "sourcePort": "c484ee87-1fd5-44d7-a599-2faf432f5ef7",
@@ -391,7 +391,7 @@
               },
               "5e1fda7f-d2fe-4202-9cfc-c7552273f87c": {
                   "id": "5e1fda7f-d2fe-4202-9cfc-c7552273f87c",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "2c4c2840-c7e7-4912-bee5-15f27535c480",
                   "sourcePort": "e64d1e29-f3a0-436a-9a1c-52e131a20846",
@@ -431,7 +431,7 @@
               },
               "a81c02fc-f5e4-4759-85e0-26eb2ec573bd": {
                   "id": "a81c02fc-f5e4-4759-85e0-26eb2ec573bd",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "510b74a8-937a-4645-b242-9fdb042f2b5f",
                   "sourcePort": "c484ee87-1fd5-44d7-a599-2faf432f5ef7",
@@ -483,7 +483,7 @@
               },
               "2ad2fa2f-689e-4491-9a5a-3e55735e6910": {
                   "id": "2ad2fa2f-689e-4491-9a5a-3e55735e6910",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "510b74a8-937a-4645-b242-9fdb042f2b5f",
                   "sourcePort": "c484ee87-1fd5-44d7-a599-2faf432f5ef7",
@@ -523,7 +523,7 @@
               },
               "a27d041e-3df3-46dd-9a7a-497df4908721": {
                   "id": "a27d041e-3df3-46dd-9a7a-497df4908721",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "0a041b33-5795-4bd8-aa61-9f121944c60a",
                   "sourcePort": "e658b57c-848a-458c-b8cb-a87ae713ea2e",
@@ -575,7 +575,7 @@
               },
               "3dbe3cd8-a350-4005-883a-20ddc4822f27": {
                   "id": "3dbe3cd8-a350-4005-883a-20ddc4822f27",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "f946c05f-f6dc-4d64-bf8b-df05602aa945",
                   "sourcePort": "b38b080e-acd6-4698-add8-518cae5c7b4d",
@@ -615,7 +615,7 @@
               },
               "9df17542-550e-4e21-ab8f-ce5d8d39b1b1": {
                   "id": "9df17542-550e-4e21-ab8f-ce5d8d39b1b1",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "f946c05f-f6dc-4d64-bf8b-df05602aa945",
                   "sourcePort": "c090239c-9fa7-46a0-be9f-25535f60953c",
@@ -655,7 +655,7 @@
               },
               "ee3a1f8a-50dd-418a-9506-e90331a3e966": {
                   "id": "ee3a1f8a-50dd-418a-9506-e90331a3e966",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "5fe107a2-f989-491f-b864-f1aa2b529bcd",
                   "sourcePort": "0291efe6-63fd-4ad9-a6b8-b2d0ddc871ab",
@@ -695,7 +695,7 @@
               },
               "cad18584-0aeb-4422-81d3-e2080663795d": {
                   "id": "cad18584-0aeb-4422-81d3-e2080663795d",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "0a041b33-5795-4bd8-aa61-9f121944c60a",
                   "sourcePort": "e66bd730-9c67-44d4-ab1f-d6d1608ca7c9",
@@ -735,7 +735,7 @@
               },
               "43fae9a6-d11c-4fd2-8fe8-91e1b811cd96": {
                   "id": "43fae9a6-d11c-4fd2-8fe8-91e1b811cd96",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "d25c2ca8-3f2b-49fa-8568-83cbc46722e4",
                   "sourcePort": "71db1dd9-0802-4b9f-ac8e-acd17218d7a4",
@@ -775,7 +775,7 @@
               },
               "33de5840-2ffc-474a-b07c-97ec0e1696c0": {
                   "id": "33de5840-2ffc-474a-b07c-97ec0e1696c0",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "510b74a8-937a-4645-b242-9fdb042f2b5f",
                   "sourcePort": "c484ee87-1fd5-44d7-a599-2faf432f5ef7",
@@ -815,7 +815,7 @@
               },
               "7308c83d-0953-4c1d-be58-8264030a22d3": {
                   "id": "7308c83d-0953-4c1d-be58-8264030a22d3",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "8ee1095b-2335-4308-9de6-234382538707",
                   "sourcePort": "70874786-3ec9-45d4-9088-28f1234dd0aa",
@@ -867,7 +867,7 @@
               },
               "456db4c2-fc6b-4168-815a-77175473d16e": {
                   "id": "456db4c2-fc6b-4168-815a-77175473d16e",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "0a041b33-5795-4bd8-aa61-9f121944c60a",
                   "sourcePort": "41daadca-5a9f-487e-95e4-1a69f98e770f",
@@ -907,7 +907,7 @@
               },
               "cc8eeff7-6779-449c-b466-2278ac8afb65": {
                   "id": "cc8eeff7-6779-449c-b466-2278ac8afb65",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "510b74a8-937a-4645-b242-9fdb042f2b5f",
                   "sourcePort": "c484ee87-1fd5-44d7-a599-2faf432f5ef7",
@@ -947,7 +947,7 @@
               },
               "651a5c9f-643c-42ee-b3ac-54073c0bb132": {
                   "id": "651a5c9f-643c-42ee-b3ac-54073c0bb132",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "144e5091-b795-449f-9be1-acd94ccc828b",
                   "sourcePort": "60430ca6-7d0d-40bc-ab8d-6e7f2445552a",
@@ -987,7 +987,7 @@
               },
               "9ce3c91b-6dbb-4143-b511-2f7c5decf984": {
                   "id": "9ce3c91b-6dbb-4143-b511-2f7c5decf984",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "144e5091-b795-449f-9be1-acd94ccc828b",
                   "sourcePort": "60430ca6-7d0d-40bc-ab8d-6e7f2445552a",
@@ -1039,7 +1039,7 @@
               },
               "825db789-a977-403f-b311-cc6e27bef1a2": {
                   "id": "825db789-a977-403f-b311-cc6e27bef1a2",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "861e8ae5-7b5f-4c2e-9959-9a31420e352d",
                   "sourcePort": "c7a8b56a-a355-4cb0-afac-d42ecfcca1d7",
@@ -1079,7 +1079,7 @@
               },
               "c8deb288-c1e1-4fe8-9a1a-5550f6cbba3c": {
                   "id": "c8deb288-c1e1-4fe8-9a1a-5550f6cbba3c",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "77c7e375-517a-4b99-93e8-e07da0cfcc76",
                   "sourcePort": "d4732612-3f6e-43c5-88bc-ab866595632e",
@@ -1131,7 +1131,7 @@
               },
               "0f63e6dc-ca99-4479-8ff0-ae0c9c1f7c6b": {
                   "id": "0f63e6dc-ca99-4479-8ff0-ae0c9c1f7c6b",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "0a041b33-5795-4bd8-aa61-9f121944c60a",
                   "sourcePort": "9a61dd40-dd2b-4247-aad7-34d4af4f347e",
@@ -1177,7 +1177,7 @@
               },
               "8aad8760-21bb-4fc7-87e5-5cf0e9f75b2a": {
                   "id": "8aad8760-21bb-4fc7-87e5-5cf0e9f75b2a",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "0a041b33-5795-4bd8-aa61-9f121944c60a",
                   "sourcePort": "29cf561f-c18a-4a5c-823a-0c88bc553e44",
@@ -1217,7 +1217,7 @@
               },
               "195b3994-8a46-4c2b-99a2-57fac3d1f5aa": {
                   "id": "195b3994-8a46-4c2b-99a2-57fac3d1f5aa",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "0a041b33-5795-4bd8-aa61-9f121944c60a",
                   "sourcePort": "e029861b-7409-4e06-9cd7-852463a87d47",
@@ -1263,7 +1263,7 @@
               },
               "e526ca0b-fdd8-4d3a-ab5c-dc179f4ae2da": {
                   "id": "e526ca0b-fdd8-4d3a-ab5c-dc179f4ae2da",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "f946c05f-f6dc-4d64-bf8b-df05602aa945",
                   "sourcePort": "c090239c-9fa7-46a0-be9f-25535f60953c",
@@ -1315,7 +1315,7 @@
               },
               "880c64e7-5564-4c03-8e9b-7146129b900c": {
                   "id": "880c64e7-5564-4c03-8e9b-7146129b900c",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "d25c2ca8-3f2b-49fa-8568-83cbc46722e4",
                   "sourcePort": "71db1dd9-0802-4b9f-ac8e-acd17218d7a4",
@@ -1355,7 +1355,7 @@
               },
               "b9558e2c-79c1-4f6e-8af9-479ff5f01d55": {
                   "id": "b9558e2c-79c1-4f6e-8af9-479ff5f01d55",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "aa39bcd4-2f44-4e34-a735-0b89d2468cc7",
                   "sourcePort": "fdff8232-ecb6-4769-8eef-3f577dabc158",
@@ -1395,7 +1395,7 @@
               },
               "797a5917-8426-414d-b285-e45dc8a3a2aa": {
                   "id": "797a5917-8426-414d-b285-e45dc8a3a2aa",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "38cdcdc9-4a6a-45e3-8dcf-9493d16a675d",
                   "sourcePort": "dc534c30-ceda-4835-9bd3-5ae499357406",
@@ -1435,7 +1435,7 @@
               },
               "3c8c8f65-5bc0-4e6a-8665-876b24009d4e": {
                   "id": "3c8c8f65-5bc0-4e6a-8665-876b24009d4e",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "38cdcdc9-4a6a-45e3-8dcf-9493d16a675d",
                   "sourcePort": "dc534c30-ceda-4835-9bd3-5ae499357406",
@@ -1475,7 +1475,7 @@
               },
               "cefe4951-f753-4b16-b4d7-079dee68441c": {
                   "id": "cefe4951-f753-4b16-b4d7-079dee68441c",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "4d61eb59-d7aa-489f-afa2-7461b8d718dd",
                   "sourcePort": "dc18192a-e0c5-4d6f-b29a-0fe2564ecfea",
@@ -1515,7 +1515,7 @@
               },
               "8df30b27-0a5d-440b-9b48-61830ff94c92": {
                   "id": "8df30b27-0a5d-440b-9b48-61830ff94c92",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "b9945562-2d48-4707-afb6-956e2275eb69",
                   "sourcePort": "fec655cd-7948-4175-81b1-954126683015",
@@ -1567,7 +1567,7 @@
               },
               "ec026460-6ee8-4d8f-950b-4e68fe66d6b4": {
                   "id": "ec026460-6ee8-4d8f-950b-4e68fe66d6b4",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "3e91d658-4d05-40db-afc3-dfa733ee7a86",
                   "sourcePort": "d73ad64c-67f5-40aa-9700-c645c7a0a730",
@@ -1607,7 +1607,7 @@
               },
               "1841eed2-4588-4a97-a08f-1ff906a2a230": {
                   "id": "1841eed2-4588-4a97-a08f-1ff906a2a230",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "0a041b33-5795-4bd8-aa61-9f121944c60a",
                   "sourcePort": "ba3eff9d-b6e8-4dac-af78-ef7bca3bb3af",
@@ -1659,7 +1659,7 @@
               },
               "cd8a8726-4a6e-4e0f-a0fc-2ecb8e5417cc": {
                   "id": "cd8a8726-4a6e-4e0f-a0fc-2ecb8e5417cc",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "0a041b33-5795-4bd8-aa61-9f121944c60a",
                   "sourcePort": "915b591c-979e-4401-b499-634f4ca4dab1",
@@ -1711,7 +1711,7 @@
               },
               "d9cad09d-4e58-4dff-8354-47895eb9de7d": {
                   "id": "d9cad09d-4e58-4dff-8354-47895eb9de7d",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "0a041b33-5795-4bd8-aa61-9f121944c60a",
                   "sourcePort": "d5809a20-2567-4931-bb37-7cef02b93182",
@@ -1751,7 +1751,7 @@
               },
               "0da841a3-8ef9-443c-98d3-be98634079f3": {
                   "id": "0da841a3-8ef9-443c-98d3-be98634079f3",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "144e5091-b795-449f-9be1-acd94ccc828b",
                   "sourcePort": "c30fcb91-9a7d-4019-b0e3-2bd85beda4dd",
@@ -1791,7 +1791,7 @@
               },
               "7b51a45c-e635-479a-8b1b-3c0a3f9bbfe1": {
                   "id": "7b51a45c-e635-479a-8b1b-3c0a3f9bbfe1",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "d808921f-da04-4bdf-96e7-ce138f9a5430",
                   "sourcePort": "18bf2622-0915-40e0-b4cd-9235f1c231e6",
@@ -1843,7 +1843,7 @@
               },
               "938a262c-3a5f-4fe0-974e-ecc54082ef75": {
                   "id": "938a262c-3a5f-4fe0-974e-ecc54082ef75",
-                  "type": "rightAngle",
+                  "type": "bitsLink",
                   "selected": false,
                   "source": "1c3c8ac1-e593-4846-8c52-49bda2594cec",
                   "sourcePort": "17463a4b-44e9-4f6d-8911-37b0eee9fb40",

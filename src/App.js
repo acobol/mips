@@ -1,7 +1,7 @@
 import './App.css';
 import Stencil from './stencil';
 import Canvas from './canvas';
-import createEngine, {DiagramModel, RightAngleLinkFactory} from '@projectstorm/react-diagrams';
+import createEngine, {DiagramModel} from '@projectstorm/react-diagrams';
 import MultiplexorFactory from './DataPathElements/Multiplexor/MultiplexorFactory';
 import ALUFactory from './DataPathElements/ALU/ALUFactory';
 import RegistryBankFactory from './DataPathElements/RegistryBank/RegistryBankFactory';
@@ -19,6 +19,7 @@ import ConcatenatorFactory from './DataPathElements/Concatenator/ConcatenatorFac
 import datapath from './datapath.json';
 import OutPortFactory from './Ports/OutPort/OutPortFactory';
 import InPortFactory from './Ports/InPort/InPortFactory';
+import BitsLinkFactory from './Links/BitsLinkFactory';
 
 const nodeFactories = [
   MultiplexorFactory,
@@ -38,7 +39,7 @@ const nodeFactories = [
 ];
 
 const linkFactories = [
-  RightAngleLinkFactory
+  BitsLinkFactory
 ];
 
 const portFactories = [
@@ -59,7 +60,7 @@ function App() {
   }
   const diagram = new DiagramModel();
   engine.getStateMachine().getCurrentState().dragNewLink.config.allowLooseLinks = false;
-  diagram.deserializeModel(datapath, engine);
+  //diagram.deserializeModel(datapath, engine);
   engine.setModel(diagram);
   return (
     <div className="App">
