@@ -16,10 +16,12 @@ import ALUControlFactory from './DataPathElements/ALUControl/ALUControlFactory';
 import AndFactory from './DataPathElements/And/AndFactory';
 import ControlFactory from './DataPathElements/Control/ControlFactory';
 import ConcatenatorFactory from './DataPathElements/Concatenator/ConcatenatorFactory';
-import datapath from './datapath.json';
+//import datapath from './datapath.json';
 import OutPortFactory from './Ports/OutPort/OutPortFactory';
 import InPortFactory from './Ports/InPort/InPortFactory';
 import BitsLinkFactory from './Links/BitsLinkFactory';
+import ConfigPanel from './ConfigPanel';
+import { DeleteItemsAction } from '@projectstorm/react-canvas-core/dist/actions/DeleteItemsAction';
 
 const nodeFactories = [
   MultiplexorFactory,
@@ -48,7 +50,8 @@ const portFactories = [
 ];
 
 function App() {
-  const engine = createEngine();
+  const engine = createEngine({registerDefaultDeleteItemsAction: false});
+  engine.getActionEventBus().registerAction(new DeleteItemsAction({keyCodes: [46]}))
   for (const factory of nodeFactories) {
     engine.getNodeFactories().registerFactory(new factory());
   }
@@ -65,9 +68,9 @@ function App() {
   return (
     <div className="App">
       <div id='main'>
-        <Stencil></Stencil>
-        <Canvas engine={engine}>
-        </Canvas>
+        <Stencil/>
+        <Canvas engine={engine}/>
+        <ConfigPanel diagram={diagram} engine={engine}/>
       </div>
     </div>
   );

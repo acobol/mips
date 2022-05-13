@@ -4,15 +4,15 @@ class ControlModel extends ElementNode {
   constructor(name = "control") {
     super({name, type: 'control', color: 'orange'});
     this.addInPort('instruction');
-    this.addOutPort('regdest');
-    this.addOutPort('ALUSrc');
-    this.addOutPort('jump');
-    this.addOutPort('branch');
-    this.addOutPort('memread');
-    this.addOutPort('memtoreg');
-    this.addOutPort('ALUOp');
-    this.addOutPort('memwrite');
-    this.addOutPort('regwrite');
+    this.addOutPort('regdest', true, 1);
+    this.addOutPort('ALUSrc', true, 1);
+    this.addOutPort('jump', true, 1);
+    this.addOutPort('branch', true, 1);
+    this.addOutPort('memread', true, 1);
+    this.addOutPort('memtoreg', true, 1);
+    this.addOutPort('ALUOp', true, 2);
+    this.addOutPort('memwrite', true, 1);
+    this.addOutPort('regwrite', true, 1);
   }
 }
 

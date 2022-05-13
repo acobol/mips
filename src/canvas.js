@@ -45,7 +45,6 @@ const Canvas = ({engine}) => {
             model.setPosition(point);
             engine.getModel().addNode(model);
             engine.repaintCanvas();
-            console.log(engine.getModel().serialize());
           }
         }}
         onDragOver={(event) => {

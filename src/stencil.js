@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 function Stencil() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   return (
     <div id="stencil" className={collapsed ? "collapsed" : ""}>
-      <div id="stencil-panel">
+      <div className="panel">
         <div
           draggable
           onDragStart={(event) => {
@@ -160,9 +160,9 @@ function Stencil() {
           Concatenator
         </div>
       </div>
-      <div id="stencil-divider" onClick={() => setCollapsed(!collapsed)}>
-        <div id="handler-container">
-          <div id="handler" onClick={() => setCollapsed(!collapsed)}></div>
+      <div className="divider" onClick={() => setCollapsed(!collapsed)}>
+        <div className="handler-container">
+          <div className="handler" onClick={() => setCollapsed(!collapsed)}></div>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import ElementNode from "../../Nodes/ElementNode";
 class InstructionsMemoryModel extends ElementNode {
   constructor(name = "instructionsMemory") {
     super({name, type: 'instructionsMemory'});
-    this.addOutPort('Instruction');
+    this.addOutPort('Instruction', true, 32);
     this.addInPort('Address');
   }
 }

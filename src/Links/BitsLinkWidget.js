@@ -107,6 +107,7 @@ class BitsLinkWidget extends RightAngleLinkWidget {
 		}
 
     //CHANGES START
+    this.refPaths = [];
     //CHANGES END
 		return <g data-default-link-test={this.props.link.getOptions().testName}>{paths}</g>;
   }

@@ -1,4 +1,4 @@
-import { DefaultLinkFactory, DefaultLinkWidget, RightAngleLinkWidget } from "@projectstorm/react-diagrams";
+import { DefaultLinkFactory} from "@projectstorm/react-diagrams";
 import BitsLinkModel from "./BitsLinkModel";
 import BitsLinkWidget from "./BitsLinkWidget";
 

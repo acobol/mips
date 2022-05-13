@@ -15,18 +15,40 @@ code {
 #main {
   width: 100vw;
   height: 100vh;
-  display: flex;
 }
 
 #stencil {
+  position: absolute;
   height: 100%;
   display: flex;
   flex-direction: row;
   margin: auto;
+  background-color: white;
+  z-index: 10;
 }
 
-#stencil.collapsed {
-  min-width: auto;
+#stencil.collapsed > .panel {
+  width: 0;
+  min-width: 0;
+  padding: 0;
+}
+
+#configPanel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  background-color: white;
+  z-index: 10;
+}
+
+#configPanel.collapsed > .panel {
+  width: 0;
+  min-width: 0;
+  padding: 0;
 }
 
 #canvas {
@@ -42,28 +64,19 @@ code {
   height: 100%;
 }
 
-#stencil-panel {
-  width: calc(100% - 1em);
+.panel {
   overflow: hidden;
   padding: 1rem;
-  box-sizing: content-box;
-  transition: all ease-in-out 0.2s;
 }
 
-#stencil.collapsed > #stencil-panel {
-  width: 0;
-  min-width: 0;
-  padding: 0;
-}
-
-#stencil-divider {
+.divider {
   position: relative;
   background-color: black;
   width: 0.5em;
   height: 100%;
 }
 
-#handler-container {
+.handler-container {
   position: absolute;
   height: 100%;
   display: flex;
@@ -73,10 +86,15 @@ code {
   justify-content: space-around;
 }
 
-#handler {
+.handler {
   width: 100%;
   height: 5%;
   background-color: black;
   z-index: 2;
+}
+
+#configPanel .handler-container {
+  left: auto;
+  right: 100%;
 }
 

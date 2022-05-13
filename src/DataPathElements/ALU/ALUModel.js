@@ -6,8 +6,8 @@ class ALUModel extends ElementNode {
     this.addInPort('reg1');
     this.addInPort('reg2');
     this.addInPort('ALUOp');
-    this.addOutPort('result');
-    this.addOutPort('zero');
+    this.addOutPort('result', true, 32);
+    this.addOutPort('zero', true, 1);
   }
 }
 

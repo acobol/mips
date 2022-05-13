@@ -1,5 +1,6 @@
-import { DefaultLabelModel, DefaultLinkWidget, RightAngleLinkModel } from "@projectstorm/react-diagrams";
+import { RightAngleLinkModel } from "@projectstorm/react-diagrams";
 import BitsLinkWidget from "./BitsLinkWidget";
+import {makeObservable, observable, reaction, action} from "mobx";
 
 class BitsLink extends RightAngleLinkModel {
   constructor(options, bits) {
@@ -8,25 +9,49 @@ class BitsLink extends RightAngleLinkModel {
       type: 'bitsLink'
     });
     this.bits = bits;
-  }
-
-  getSelectedBitsText() {
-    return `[${this.selectedBits.to}-${this.selectedBits.from}]`
+    this.selectedBits = {
+      from: 0,
+      to: this.bits ? this.bits - 1 : 0
+    }
+    makeObservable(this, {
+      bits: observable,
+      selectedBits: observable,
+      changeSelectedBitsFrom: action,
+      changeSelectedBitsTo: action
+    })
   }
 
   generateReactWidget(event) {
 		return <BitsLinkWidget diagramEngine={this.engine} link={event.model} factory={this} />;
 	}
 
-  resetLabels() {
-    if(!this.getLabels().length) {
-      this.addLabel(`${this.bits}`);
+  changeBits(bits) {
+    this.bits = bits;
+    this.selectedBits = {
+      from: this.selectedBits.from < bits - 1 ? this.selectedBits.from : 0,
+      to: this.selectedBits.to < bits - 1 ? this.selectedBits.to : this.bits - 1
     }
   }
 
-  setTargetPort(port) {
-    super.setTargetPort(port);
-    this.addLabel(new DefaultLabelModel({ label: 'Label' }));
+  changeSelectedBitsFrom(bits) {
+    const bitsNumber = parseInt(bits);
+    if(bitsNumber <= this.selectedBits.to) {
+      this.selectedBits.from = bitsNumber;
+    }
+  }
+
+  changeSelectedBitsTo(bits) {
+    const bitsNumber = parseInt(bits);
+    if(bitsNumber >= this.selectedBits.from) {
+      this.selectedBits.to = bitsNumber;
+    }
+  }
+
+  setSourcePort(port) {
+    super.setSourcePort(port);
+    reaction(() => this.sourcePort.bitsNumber, (bits) => {
+      this.changeBits(bits);
+    });
   }
 }
 
