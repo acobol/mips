@@ -5,7 +5,7 @@ import ALUModel from "./DataPathElements/ALU/ALUModel";
 import RegistryBankModel from "./DataPathElements/RegistryBank/RegistryBankModel";
 import MemoryBankModel from "./DataPathElements/MemoryBank/MemoryBankModel";
 import SignExtensorModel from "./DataPathElements/SignExtend/SignExtendModel";
-import InstructionsMemoryModel from "./DataPathElements/InstructionsMemory/InstructionsMemoryModel";
+import InstructionsRegistryModel from "./DataPathElements/InstructionsRegistry/InstructionsRegistryModel";
 import PCModel from './DataPathElements/PC/PCModel';
 import AddModel from "./DataPathElements/Add/AddModel";
 import ConstModel from "./DataPathElements/Const/ConstModel";
@@ -14,6 +14,8 @@ import ALUControlModel from "./DataPathElements/ALUControl/ALUControlModel";
 import AndModel from "./DataPathElements/And/AndModel";
 import ControlModel from "./DataPathElements/Control/ControlModel";
 import ConcatenatorModel from "./DataPathElements/Concatenator/ConcatenatorModel";
+import OrModel from "./DataPathElements/Or/OrModel";
+import RegistryModel from "./DataPathElements/Registry/RegistryModel";
 
 const models = {
   'ALU': ALUModel,
@@ -21,7 +23,7 @@ const models = {
   'registryBank': RegistryBankModel,
   'memoryBank': MemoryBankModel,
   'signExtend': SignExtensorModel,
-  'instructionsMemory': InstructionsMemoryModel,
+  'instructionsRegistry': InstructionsRegistryModel,
   'pc': PCModel,
   'add': AddModel,
   'const': ConstModel,
@@ -29,7 +31,9 @@ const models = {
   'ALUControl': ALUControlModel,
   'and': AndModel,
   'control': ControlModel,
-  'concatenator': ConcatenatorModel
+  'concatenator': ConcatenatorModel,
+  'or': OrModel,
+  'registry': RegistryModel
 }
 
 const Canvas = ({engine}) => {

@@ -1,10 +1,10 @@
 import { AbstractReactFactory } from "@projectstorm/react-canvas-core";
 import { DefaultNodeWidget } from "@projectstorm/react-diagrams";
-import InstructionsMemoryModel from "./InstructionsMemoryModel";
+import OrModel from "./OrModel";
 
-class InstructionsMemoryFactory extends AbstractReactFactory {
+class OrFactory extends AbstractReactFactory {
   constructor() {
-    super('instructionsMemory');
+    super('or');
   }
 
   generateReactWidget(event) {
@@ -12,9 +12,9 @@ class InstructionsMemoryFactory extends AbstractReactFactory {
   }
 
   generateModel(event) {
-    return new InstructionsMemoryModel();
+    return new OrModel();
   }
 }
 
-export default InstructionsMemoryFactory;
+export default OrFactory;
 

@@ -37,6 +37,15 @@ export class OutPortModel extends DefaultPortModel {
   canLinkToPort(port) {
     return port.getMaximumLinks() >= Object.keys(port.links).length + 1 && super.canLinkToPort(port);
   }
+
+  putSignal(signal) {
+    this.signal = signal;
+  }
+
+  getSignal() {
+    this.parent.processState();
+    return this.signal;
+  }
 }
 
 export default OutPortModel;

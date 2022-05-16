@@ -1,13 +1,18 @@
 import ElementNode from "../../Nodes/ElementNode";
-import {reaction} from "mobx";
+import {action, makeObservable, observable, reaction} from "mobx";
 
 class MultiplexorModel extends ElementNode {
-  constructor(name = "multiplexor") {
+  constructor(name = "Multiplexor") {
     super({name, type: 'multiplexor'});
-    const signalPort = this.addInPort('signal');
-    const outPort = this.addOutPort("out", 0);
+    this.signalPort = this.addInPort('Señal');
+    this.outPort = this.addOutPort("Salida", 0);
     this.signalPorts = [];
-    reaction(() => signalPort.bits, (newBits, prevBits) => {
+    this.out = undefined
+    makeObservable(this, {
+      out: observable,
+      processState: action
+    })
+    reaction(() => this.signalPort.bits, (newBits, prevBits) => {
       if(newBits !== prevBits) {
         if(newBits > prevBits) {
           for (let i = this.signalPorts.length; i < 2 ** newBits; i++) {
@@ -23,9 +28,26 @@ class MultiplexorModel extends ElementNode {
         for (let i = 0; i < this.signalPorts; i++) {
           max = Math.max(max, this.signalPorts[i].bits);
         }
-        outPort.changeBitsNumber(max);
+        this.outPort.changeBitsNumber(max);
       }
     });
+  }
+
+  processState() {
+    const signal = this.signalPort.getSignal();
+    if(signal) {
+      const intValue = parseInt(signal, 2);
+      this.out = this.signalPorts[intValue].getSignal();
+    }
+  }
+
+  getConfigForm(engine) {
+    return <label>
+      <div>Current Out: {this.out}</div>
+      <button onClick={() => {
+        this.processState();
+      }}>Next state</button>
+    </label>
   }
 }
 

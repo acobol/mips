@@ -31,6 +31,12 @@ export class InPortModel extends DefaultPortModel {
     super.removeLink(link);
     this.bits = 0;
   }
+
+  getSignal() {
+    return Object.keys(this.getLinks()).map((link) => {
+      return this.links[link].getSignal();
+    })[0];
+  }
 }
 
 export default InPortModel;

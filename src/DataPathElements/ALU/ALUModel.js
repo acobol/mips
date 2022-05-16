@@ -3,11 +3,11 @@ import ElementNode from "../../Nodes/ElementNode";
 class ALUModel extends ElementNode {
   constructor(name = "ALU") {
     super({name, type: 'ALU'});
-    this.addInPort('reg1');
-    this.addInPort('reg2');
-    this.addInPort('ALUOp');
-    this.addOutPort('result', true, 32);
-    this.addOutPort('zero', true, 1);
+    this.addInPort('Registro1');
+    this.addInPort('Registro2');
+    this.addInPort('ALU Operation');
+    this.addOutPort('Resultado', true, 32);
+    this.addOutPort('Cero', true, 1);
   }
 }
 

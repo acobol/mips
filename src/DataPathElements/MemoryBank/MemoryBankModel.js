@@ -1,13 +1,13 @@
 import ElementNode from "../../Nodes/ElementNode";
 
 class MemoryBankModel extends ElementNode {
-  constructor(name = "memoryBank") {
+  constructor(name = "Memoria") {
     super({name, type: 'memoryBank'});
-    this.addOutPort('Data', true, 32);
-    this.addInPort('MemWrite');
-    this.addInPort('MemRead');
-    this.addInPort('Address');
-    this.addInPort('WriteData');
+    this.addOutPort('Dato/Instrucción', true, 32);
+    this.addInPort('Dirección');
+    this.addInPort('Dato a escribir');
+    this.addInPort('LeerMem');
+    this.addInPort('EscrMem');
   }
 }
 

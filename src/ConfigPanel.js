@@ -19,27 +19,11 @@ const NodeInspector = observer(({ node, engine }) => {
           }}
         />
       </label>
-      <button
-        onClick={() => {
-          node.addOutPort("");
-          engine.repaintCanvas();
-        }}
-      >
-        Add signal
-      </button>
       {node.getOutPorts().map((port) => {
         return (
           <div key={port.options.id}>
             <label>
-              Signal name
-              <input
-                type={"text"}
-                defaultValue={port.options.name}
-                onChange={(event) => {
-                  port.changeName(event.target.value);
-                  engine.repaintCanvas();
-                }}
-              />
+              Signal name {port.options.name}
             </label>
             <label>
               Bits:
@@ -55,14 +39,6 @@ const NodeInspector = observer(({ node, engine }) => {
                 }}
               />
             </label>
-            <button
-              onClick={() => {
-                node.removePort(port);
-                engine.repaintCanvas();
-              }}
-            >
-              Remove signal
-            </button>
           </div>
         );
       })}
@@ -75,6 +51,7 @@ const NodeInspector = observer(({ node, engine }) => {
           </div>
         );
       })}
+      {node.getConfigForm(engine)}
     </div>
   );
 });
@@ -131,6 +108,17 @@ const ConfigPanel = ({ diagram, engine }) => {
   const [selectedElement, setSelectedElement] = useState(undefined);
   const [collapsed, setCollapsed] = useState(true);
   useEffect(() => {
+    diagram.getNodes().forEach((node) => {
+      node.registerListener({
+        selectionChanged: ({ isSelected }) => {
+          if (isSelected) {
+            setSelectedElement(node);
+          } else {
+            setSelectedElement(undefined);
+          }
+        }
+      });
+    });
     diagram.registerListener({
       nodesUpdated: ({ node, isCreated }) => {
         if (isCreated) {

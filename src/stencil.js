@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function Stencil() {
-  const [collapsed, setCollapsed] = useState(true);
+  const [collapsed, setCollapsed] = useState(false);
   return (
     <div id="stencil" className={collapsed ? "collapsed" : ""}>
       <div className="panel">
@@ -65,7 +65,7 @@ function Stencil() {
           onDragStart={(event) => {
             event.dataTransfer.setData(
               "model-def",
-              JSON.stringify({ type: "instructionsMemory" })
+              JSON.stringify({ type: "instructionsRegistry" })
             );
           }}
         >
@@ -142,6 +142,17 @@ function Stencil() {
           onDragStart={(event) => {
             event.dataTransfer.setData(
               "model-def",
+              JSON.stringify({ type: "or" })
+            );
+          }}
+        >
+          Or
+        </div>
+        <div
+          draggable
+          onDragStart={(event) => {
+            event.dataTransfer.setData(
+              "model-def",
               JSON.stringify({ type: "control" })
             );
           }}
@@ -158,6 +169,17 @@ function Stencil() {
           }}
         >
           Concatenator
+        </div>
+        <div
+          draggable
+          onDragStart={(event) => {
+            event.dataTransfer.setData(
+              "model-def",
+              JSON.stringify({ type: "registry" })
+            );
+          }}
+        >
+          Registry
         </div>
       </div>
       <div className="divider" onClick={() => setCollapsed(!collapsed)}>

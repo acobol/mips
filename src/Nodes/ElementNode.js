@@ -46,6 +46,9 @@ class ElementNode extends DefaultNodeModel {
       this.removePort(port);
     })
   }
+  getConfigForm() {
+    return null;
+  }
 }
 
 export default ElementNode;

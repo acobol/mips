@@ -7,7 +7,7 @@ import ALUFactory from './DataPathElements/ALU/ALUFactory';
 import RegistryBankFactory from './DataPathElements/RegistryBank/RegistryBankFactory';
 import MemoryBankFactory from './DataPathElements/MemoryBank/MemoryBankFactory';
 import SignExtensorFactory from './DataPathElements/SignExtend/SignExtendFactory';
-import InstructionsMemoryFactory from './DataPathElements/InstructionsMemory/InstructionsMemoryFactory';
+import InstructionsRegistryFactory from './DataPathElements/InstructionsRegistry/InstructionsRegistryFactory';
 import PCFactory from './DataPathElements/PC/PCFactory';
 import AddFactory from './DataPathElements/Add/AddFactory';
 import ConstFactory from './DataPathElements/Const/ConstFactory';
@@ -22,6 +22,11 @@ import InPortFactory from './Ports/InPort/InPortFactory';
 import BitsLinkFactory from './Links/BitsLinkFactory';
 import ConfigPanel from './ConfigPanel';
 import { DeleteItemsAction } from '@projectstorm/react-canvas-core/dist/actions/DeleteItemsAction';
+import OrFactory from './DataPathElements/Or/OrFactory';
+import RegistryFactory from './DataPathElements/Registry/RegistryFactory';
+import ControlModel from './DataPathElements/Control/ControlModel';
+import PCModel from './DataPathElements/PC/PCModel';
+import MultiplexorModel from './DataPathElements/Multiplexor/MultiplexorModel';
 
 const nodeFactories = [
   MultiplexorFactory,
@@ -29,7 +34,7 @@ const nodeFactories = [
   RegistryBankFactory,
   MemoryBankFactory,
   SignExtensorFactory,
-  InstructionsMemoryFactory,
+  InstructionsRegistryFactory,
   PCFactory,
   AddFactory,
   ConstFactory,
@@ -37,7 +42,9 @@ const nodeFactories = [
   ALUControlFactory,
   AndFactory,
   ControlFactory,
-  ConcatenatorFactory
+  ConcatenatorFactory,
+  OrFactory,
+  RegistryFactory
 ];
 
 const linkFactories = [

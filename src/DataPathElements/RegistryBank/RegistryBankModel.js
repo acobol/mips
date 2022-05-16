@@ -1,15 +1,15 @@
 import ElementNode from "../../Nodes/ElementNode";
 
 class RegistryBankModel extends ElementNode {
-  constructor(name = "registryBank") {
+  constructor(name = "Banco de registros") {
     super({name, type: 'registryBank'});
-    this.addOutPort('ReadData1', true, 32);
-    this.addOutPort('ReadData2', true, 32);
-    this.addInPort('RegWrite');
-    this.addInPort('ReadRegister1');
-    this.addInPort('ReadRegister2');
-    this.addInPort('WriteRegister');
-    this.addInPort('WriteData');
+    this.addOutPort('Dato1', true, 32);
+    this.addOutPort('Dato2', true, 32);
+    this.addInPort('EscrReg');
+    this.addInPort('Reg. lectura 1');
+    this.addInPort('Reg. lectura 2');
+    this.addInPort('Reg. escritura');
+    this.addInPort('Dato a escribir');
   }
 }
 

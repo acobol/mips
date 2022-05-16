@@ -42,7 +42,7 @@ class BitsLink extends RightAngleLinkModel {
 
   changeSelectedBitsTo(bits) {
     const bitsNumber = parseInt(bits);
-    if(bitsNumber >= this.selectedBits.from) {
+    if(bitsNumber >= this.selectedBits.to) {
       this.selectedBits.to = bitsNumber;
     }
   }
@@ -52,6 +52,14 @@ class BitsLink extends RightAngleLinkModel {
     reaction(() => this.sourcePort.bitsNumber, (bits) => {
       this.changeBits(bits);
     });
+  }
+
+  getSignal() {
+    const signal = this.getSourcePort().getSignal();
+    if(signal) {
+      return signal.slice(this.selectedBits.from, this.selectedBits.to + 1)
+    }
+    return undefined;
   }
 }
 
