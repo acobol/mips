@@ -27,6 +27,8 @@ import RegistryFactory from './DataPathElements/Registry/RegistryFactory';
 import ControlModel from './DataPathElements/Control/ControlModel';
 import PCModel from './DataPathElements/PC/PCModel';
 import MultiplexorModel from './DataPathElements/Multiplexor/MultiplexorModel';
+import { FormatForms } from './Assembly/FormatsForm';
+import { AssemblyConstructor } from './Assembly/AssemblyConstructor';
 
 const nodeFactories = [
   MultiplexorFactory,
@@ -57,7 +59,7 @@ const portFactories = [
 ];
 
 function App() {
-  const engine = createEngine({registerDefaultDeleteItemsAction: false});
+/*   const engine = createEngine({registerDefaultDeleteItemsAction: false});
   engine.getActionEventBus().registerAction(new DeleteItemsAction({keyCodes: [46]}))
   for (const factory of nodeFactories) {
     engine.getNodeFactories().registerFactory(new factory());
@@ -80,7 +82,8 @@ function App() {
         <ConfigPanel diagram={diagram} engine={engine}/>
       </div>
     </div>
-  );
+  ); */
+  return <AssemblyConstructor></AssemblyConstructor>
 }
 
 export default App;
