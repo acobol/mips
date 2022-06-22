@@ -1,17 +1,39 @@
 import ElementNode from "../../Nodes/ElementNode";
-import {reaction} from "mobx";
+import {action, makeObservable, observable, reaction} from "mobx";
+
+const IN_SIGNAL_PORT = 'Entrada';
+const OUT_SIGNAL_PORT = 'Salida';
 
 class RegistryModel extends ElementNode {
   constructor(name = "Registro") {
     super({name, type: 'registry'});
-    const outSignal = this.addOutPort('Entrada');
-    const inSignal = this.addInPort('Salida');
+    this.addInPort(IN_SIGNAL_PORT);
+    this.addOutPort(OUT_SIGNAL_PORT);
     reaction(
-      () => inSignal.bits,
+      () => this.getPort(IN_SIGNAL_PORT).bits,
       (newBits) => {
-        outSignal.changeBitsNumber(newBits);
+        this.getPort(OUT_SIGNAL_PORT).changeBitsNumber(newBits);
       }
     );
+    this.currentValue = undefined;
+    makeObservable(this, {
+      currentValue: observable,
+      processState: action
+    })
+  }
+
+  processState() {
+    if(this.currentValue) {
+      this.getPort(OUT_SIGNAL_PORT).putSignal(this.currentValue);
+    }
+    this.currentValue = this.getPort(IN_SIGNAL_PORT).getSignal();
+    this.stageProcessed = true;
+  }
+
+  getConfigForm(engine) {
+    return <div>
+      Current value: {this.currentValue}
+    </div>
   }
 }
 

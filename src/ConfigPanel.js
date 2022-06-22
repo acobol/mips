@@ -134,6 +134,17 @@ const ConfigPanel = ({ diagram, engine }) => {
         }
       }
     });
+    diagram.getLinks().forEach((link) => {
+      link.registerListener({
+        selectionChanged: ({ isSelected }) => {
+          if (isSelected) {
+            setSelectedElement(link);
+          } else {
+            setSelectedElement(undefined);
+          }
+        }
+      })
+    });
     diagram.registerListener({
       linksUpdated: ({ link, isCreated }) => {
         if (isCreated) {

@@ -10,14 +10,31 @@ const OPERATIONS = {
   '1100': 'nor'
 };
 
+const or = (a, b) => a | b;
+const and  = (a, b) => a & b;
+// eslint-disable-next-line
+const not = (a) => a == '1' ? '0' : '1';
+const xor = (a, b) => and(or(a,b), not(and(a,b)));
+const halfAdder = (a, b) => [and(a, b), xor(a, b)];
+const fullAdder = (a, b, c) => {
+  const [carry1, result1] = halfAdder(a,b);
+  return [or(carry1, and(result1, c)), xor(result1, c)];
+};
+
+const REG1_PORT = "Registro1";
+const REG2_PORT = "Registro2";
+const ALU_OPERATION_PORT = "Operación ALU";
+const RESULT_PORT = "Resultado";
+const ZERO_PORT = "Cero";
+
 class ALUModel extends ElementNode {
   constructor(name = "ALU") {
     super({name, type: 'ALU'});
-    this.reg1 = this.addInPort('Registro1');
-    this.reg2 = this.addInPort('Registro2');
-    this.operation = this.addInPort('ALU Operation');
-    this.result = this.addOutPort('Resultado', true, 32);
-    this.zeroOut = this.addOutPort('Cero', true, 1);
+    this.addInPort(REG1_PORT);
+    this.addInPort(REG2_PORT);
+    this.addInPort(ALU_OPERATION_PORT);
+    this.addOutPort(RESULT_PORT, true, 32);
+    this.addOutPort(ZERO_PORT, true, 1);
     this.value = undefined;
     this.zero = undefined;
     makeObservable(this, {
@@ -28,51 +45,76 @@ class ALUModel extends ElementNode {
   }
 
   processState() {
-    const reg1 = this.reg1.getSignal();
-    const value1 = parseInt(reg1, 2);
-    const reg2 = this.reg2.getSignal();
-    const value2 = parseInt(reg2, 2);
-    const operationSignal = this.operation.getSignal();
-    const operation = OPERATIONS[operationSignal];
-    this.zero = value1 - value2 === 0 ? '1' : '0';
-    this.zeroOut.putSignal(this.zero);
-    switch (operation) {
-      case 'and': {
-        const resultValue = value1 & value2;
-        this.value = resultValue.toString(2).padStart(32, '0');
-        break;
+    const reg1 = this.getPort(REG1_PORT).getSignal();
+    if(reg1) {
+      const a = Array.from(reg1);
+      const reg2 = this.getPort(REG2_PORT).getSignal();
+      if(reg2) {
+        const b = Array.from(reg2);
+        const operationSignal = this.getPort(ALU_OPERATION_PORT).getSignal();
+        const operation = OPERATIONS[operationSignal];
+        const result = [];
+        switch (operation) {
+          case 'and': {
+            for(let i = a.length - 1; i>= 0; i--) {
+              result[i] = and(a[i], b[i]);
+            }
+            break;
+          }
+          case 'or': {
+            for(let i = a.length - 1; i>= 0; i--) {
+              result[i] = or(a[i], b[i]);
+            }
+            break;
+          }
+          case 'add': {
+            let carry = "0";
+            for(let i = a.length - 1; i>= 0; i--) {
+              const [carryI, resultI] = fullAdder(a[i], b[i], carry);
+              result[i] = resultI;
+              carry = carryI;
+            }
+            break;
+          }
+          case 'sub': {
+            let carry = "1";
+            for(let i = a.length - 1; i>= 0; i--) {
+              const [carryI, resultI] = fullAdder(a[i], not(b[i]), carry);
+              result[i] = resultI;
+              carry = carryI;
+            }
+            break;
+          }
+          case 'slt': {
+            let carry = "1";
+            let lastResult;
+            for(let i = a.length - 1; i>= 0; i--) {
+              const [carryI, resultI] = fullAdder(a[i], not(b[i]), carry);
+              result[i] = "0";
+              carry = carryI;
+              lastResult = resultI;
+            }
+            result[0] = xor(lastResult, carry);
+            break;
+          }
+          case 'nor': {
+            for(let i = a.length - 1; i>= 0; i--) {
+              result[i] = not(or(a[i], b[i]));
+            }
+            break;
+          }
+          default:
+            break;
+        }
+        this.value = result.join("");
+        this.zero = not(result.reduce((acc, a) => {
+          return or(acc, a);
+        }, "0"));
+        this.getPort(RESULT_PORT).putSignal(this.value);
+        this.getPort(ZERO_PORT).putSignal(this.zero);
       }
-      case 'or': {
-        const resultValue = value1 | value2;
-        this.value = resultValue.toString(2).padStart(32, '0');
-        break;
-      }
-      case 'add': {
-        const resultValue = value1 + value2;
-        this.value = resultValue.toString(2).padStart(32, '0');
-        break;
-      }
-      case 'sub': {
-        const resultValue = value1 - value2;
-        const resultSignal = (resultValue >>> 0).toString(2);
-        this.value = resultSignal.padStart(32, '0');
-        break;
-      }
-      case 'slt': {
-        const resultValue = value1 < value2;
-        const resultSignal = resultValue ? '1' : '0';
-        this.value = resultSignal.padStart(32, 0);
-        break;
-      }
-      case 'nor': {
-        const resultValue = ~(value1 | value2);
-        this.value = (resultValue >>> 0).toString(2).padStart(32, '0');
-        break;
-      }
-      default:
-        break;
     }
-    this.result.putSignal(this.value);
+    this.stageProcessed = true;
   }
 
   getConfigForm(engine) {

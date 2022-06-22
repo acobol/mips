@@ -37,6 +37,17 @@ export class InPortModel extends DefaultPortModel {
       return this.links[link].getSignal();
     })[0];
   }
+
+  serialize() {
+    return Object.assign(Object.assign({}, super.serialize()), {
+      bits: this.bits
+    });
+  }
+
+  deserialize(event) {
+    super.deserialize(event);
+    this.bits = event.data.bits
+  }
 }
 
 export default InPortModel;

@@ -9,6 +9,7 @@ import { makeObservable, observable } from "mobx";
 class ElementNode extends DefaultNodeModel {
   constructor(options) {
     super(options);
+    this.stageProcessed = false;
     makeObservable(this, {
       portsOut: observable
     });
@@ -26,6 +27,7 @@ class ElementNode extends DefaultNodeModel {
     }
     return this.addPort(p);
   }
+
   addOutPort(label, after = true, bits = 0) {
     const p = new OutPortModel({
       in: false,
@@ -38,16 +40,26 @@ class ElementNode extends DefaultNodeModel {
     }
     return this.addPort(p);
   }
+
   changeName(name) {
     this.options.name = name;
   }
+  
   clearPorts(ports) {
     ports.forEach((port) => {
       this.removePort(port);
     })
   }
+
   getConfigForm() {
     return null;
+  }
+  
+  startStage() {
+    this.stageProcessed = false;
+    this.getOutPorts().forEach((port) => {
+      port.clearSignal();
+    })
   }
 }
 

@@ -1,16 +1,20 @@
 import ElementNode from "../../Nodes/ElementNode";
 import {action, makeObservable, observable, reaction} from "mobx";
 
+const RESULT_PORT = 'Result';
+const A_PORT = 'Dato1';
+const B_PORT = 'Dato2';
+
 class ConcatenatorModel extends ElementNode {
   constructor(name = "Concatenador") {
     super({name, type: 'concatenator'});
-    this.resultPort = this.addOutPort('Salida');
-    this.a = this.addInPort('Dato1');
-    this.b = this.addInPort('Dato2');
+    this.addOutPort(RESULT_PORT);
+    this.addInPort(A_PORT);
+    this.addInPort(B_PORT);
     reaction(
-      () => this.a.bits + this.b.bits,
+      () => this.getPort(A_PORT).bits + this.getPort(B_PORT).bits,
       (newBits) => {
-        this.resultPort.changeBitsNumber(newBits);
+        this.getPort(RESULT_PORT).changeBitsNumber(newBits);
       }
     );
     this.result = undefined;
@@ -21,11 +25,13 @@ class ConcatenatorModel extends ElementNode {
   }
 
   processState() {
-    const aValue = this.a.getSignal();
-    const bValue = this.b.getSignal();
+    const aValue = this.getPort(A_PORT).getSignal();
+    const bValue = this.getPort(B_PORT).getSignal();
     if(aValue && bValue) {
       this.result = aValue + bValue;
+      this.getPort(RESULT_PORT).putSignal(this.result);
     }
+    this.stageProcessed = true;
   }
 
   getConfigForm(engine) {

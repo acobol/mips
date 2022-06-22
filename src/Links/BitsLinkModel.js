@@ -42,7 +42,7 @@ class BitsLink extends RightAngleLinkModel {
 
   changeSelectedBitsTo(bits) {
     const bitsNumber = parseInt(bits);
-    if(bitsNumber >= this.selectedBits.to) {
+    if(bitsNumber >= this.selectedBits.from) {
       this.selectedBits.to = bitsNumber;
     }
   }
@@ -54,12 +54,40 @@ class BitsLink extends RightAngleLinkModel {
     });
   }
 
+  putSignal(signal) {
+    this.signal = signal;
+  }
+
   getSignal() {
-    const signal = this.getSourcePort().getSignal();
-    if(signal) {
-      return signal.slice(this.selectedBits.from, this.selectedBits.to + 1)
+    if(this.signal) {
+      return this.signal;
+    } else {
+      const signal = this.getSourcePort().getSignal();
+      if(signal) {
+        const reversedBits = Array.from(signal).reverse();
+        this.signal = reversedBits.slice(this.selectedBits.from, this.selectedBits.to + 1).reverse().join("");
+        return this.signal;
+      }
+      return undefined;
     }
-    return undefined;
+  }
+
+  clearSignal() {
+    this.signal = undefined;
+  }
+
+  serialize() {
+    return Object.assign(Object.assign({}, super.serialize()), {
+      bits: this.bits,
+      selectedBits: this.selectedBits
+    });
+  }
+
+  deserialize(event) {
+    super.deserialize(event);
+    this.bits = event.data.bits;
+    this.selectedBits.from = event.data.selectedBits.from;
+    this.selectedBits.to = event.data.selectedBits.to;
   }
 }
 

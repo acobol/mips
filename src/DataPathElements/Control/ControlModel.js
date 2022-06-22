@@ -244,23 +244,38 @@ const states = {
   },
 }
 
+const INSTRUCTION_PORT = "Instrucción";
+const ESCR_PC_COND_PORT = "EscrPC Cond";
+const ESCR_PC_PORT = "EscrPC";
+const IOD_PORT = "IoD";
+const READ_MEM_PORT = "LeerMem";
+const WRITE_MEM_PORT = "EscrMem";
+const MEM_TO_REG_PORT = "MemaReg";
+const IR_WRITE_PORT = "EscrIR";
+const PC_SOURCE_PORT = "FuentePC";
+const ALU_OP_PORT = "ALUOp";
+const ALU_SOURCE_A_PORT = "SelALUA";
+const ALU_SOURCE_B_PORT = "SelALUB";
+const REG_WRITE_PORT = "EscrReg";
+const REG_DEST_PORT = "RegDest";
+
 class ControlModel extends ElementNode {
   constructor(name = "Control") {
     super({name, type: 'control', color: 'orange'});
-    this.addInPort('Instrucción');
-    this.addOutPort('EscrPC Cond', true, 1);
-    this.addOutPort('EscrPC', true, 1);
-    this.addOutPort('IoD', true, 1);
-    this.addOutPort('LeerMem', true, 1);
-    this.addOutPort('EscrMem', true, 1);
-    this.addOutPort('MemaReg', true, 1);
-    this.addOutPort('EscrIR', true, 1);
-    this.addOutPort('FuentePC', true, 2);
-    this.addOutPort('ALUOp', true, 2);
-    this.addOutPort('SelALUB', true, 2);
-    this.addOutPort('SelALUA', true, 1);
-    this.addOutPort('EscrReg', true, 1);
-    this.addOutPort('RegDest', true, 1);
+    this.addInPort(INSTRUCTION_PORT);
+    this.addOutPort(ESCR_PC_COND_PORT, true, 1);
+    this.addOutPort(ESCR_PC_PORT, true, 1);
+    this.addOutPort(IOD_PORT, true, 1);
+    this.addOutPort(READ_MEM_PORT, true, 1);
+    this.addOutPort(WRITE_MEM_PORT, true, 1);
+    this.addOutPort(MEM_TO_REG_PORT, true, 1);
+    this.addOutPort(IR_WRITE_PORT, true, 1);
+    this.addOutPort(PC_SOURCE_PORT, true, 2);
+    this.addOutPort(ALU_OP_PORT, true, 2);
+    this.addOutPort(ALU_SOURCE_A_PORT, true, 1);
+    this.addOutPort(ALU_SOURCE_B_PORT, true, 2);
+    this.addOutPort(REG_WRITE_PORT, true, 1);
+    this.addOutPort(REG_DEST_PORT, true, 1);
     this.state = '0000';
     makeObservable(this, {
       state: observable,
@@ -270,11 +285,12 @@ class ControlModel extends ElementNode {
 
   processState() {
     const state = states[this.state];
-    const instruction = this.state === '0000' ? '000000' : this.getInPorts()[0].getSignal();
     this.getOutPorts().forEach((port) => {
       port.putSignal(state.signals[port.options.name]);
     });
+    const instruction = this.state === '0000' ? '000000' : this.getPort(INSTRUCTION_PORT).getSignal();
     this.state = state.nextState[instruction];
+    this.stageProcessed = true;
   }
 
   getConfigForm(engine) {

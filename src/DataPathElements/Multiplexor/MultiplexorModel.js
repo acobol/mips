@@ -1,44 +1,54 @@
 import ElementNode from "../../Nodes/ElementNode";
-import {action, makeObservable, observable, reaction} from "mobx";
+import {action, makeObservable, observable, observe, reaction} from "mobx";
+
+const SIGNAL_PORT = "Señal";
+const OUT_PORT = "Salida"
 
 class MultiplexorModel extends ElementNode {
   constructor(name = "Multiplexor") {
     super({name, type: 'multiplexor'});
-    this.signalPort = this.addInPort('Señal');
-    this.outPort = this.addOutPort("Salida", 0);
-    this.signalPorts = [];
+    this.addInPort(SIGNAL_PORT);
+    this.addOutPort(OUT_PORT, 0);
     this.out = undefined
     makeObservable(this, {
       out: observable,
-      processState: action
+      processState: action,
     })
-    reaction(() => this.signalPort.bits, (newBits, prevBits) => {
+    reaction(() => this.getPort(SIGNAL_PORT).bits, (newBits, prevBits) => {
       if(newBits !== prevBits) {
         if(newBits > prevBits) {
-          for (let i = this.signalPorts.length; i < 2 ** newBits; i++) {
+          for (let i = this.getInPorts().length - 1; i < 2 ** newBits; i++) {
             const name = `signal${i}`;
             const newPort = this.addInPort(name);
-            this.signalPorts.push(newPort);
+            observe(newPort, "bits", this.updateOutBits.bind(this));
           }
         } else {
-          const deletedPorts = this.signalPorts.splice(newBits > 0 ? 2 ** newBits : 0);
+          const deletedPorts = [...this.getInPorts()].splice(newBits > 0 ? 2 ** newBits + 1 : 1);
           this.clearPorts(deletedPorts);
         }
-        let max = 0;
-        for (let i = 0; i < this.signalPorts; i++) {
-          max = Math.max(max, this.signalPorts[i].bits);
-        }
-        this.outPort.changeBitsNumber(max);
+        this.updateOutBits();
       }
     });
   }
 
+  updateOutBits() {
+    let max = 0;
+    for (let i = 0; i < this.getInPorts().length - 1; i++) {
+      max = Math.max(max, this.getPort(`signal${i}`).bits);
+    }
+    this.getPort(OUT_PORT).changeBitsNumber(max);
+  }
+
   processState() {
-    const signal = this.signalPort.getSignal();
+    const signal = this.getPort(SIGNAL_PORT).getSignal();
     if(signal) {
       const intValue = parseInt(signal, 2);
-      this.out = this.signalPorts[intValue].getSignal();
+      if(Number.isInteger(intValue)) {
+        this.out = this.getPort(`signal${intValue}`).getSignal();
+        this.getPort(OUT_PORT).putSignal(this.out);
+      }
     }
+    this.stageProcessed = true;
   }
 
   getConfigForm(engine) {

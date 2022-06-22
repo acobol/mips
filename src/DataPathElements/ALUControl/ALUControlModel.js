@@ -15,12 +15,16 @@ const FUNCT_OPERATIONS = {
   '101010': '0111',
 }
 
+const OPERATION_PORT = 'Operación ALU';
+const INSTRUCTION_PORT = 'Instrucción';
+const ALU_OP_PORT = 'ALUOp';
+
 class ALUControlModel extends ElementNode {
   constructor(name = "ALUControl") {
     super({name, type: 'ALUControl', color: 'orange'});
-    this.operationPort = this.addOutPort('Operación ALU', true, 4);
-    this.instruction = this.addInPort('Instrucción');
-    this.selALUB = this.addInPort('SelALUB');
+    this.addOutPort(OPERATION_PORT, true, 4);
+    this.addInPort(INSTRUCTION_PORT);
+    this.addInPort(ALU_OP_PORT);
     this.operation = undefined;
     makeObservable(this, {
       operation: observable,
@@ -29,13 +33,15 @@ class ALUControlModel extends ElementNode {
   }
 
   processState() {
-    const aluSignal = this.selALUB.getSignal();
-    const instruction =  this.instruction.getSignal();
+    const aluSignal = this.getPort(ALU_OP_PORT).getSignal();
     if(aluSignal === '10') {
+      const instruction =  this.getPort(INSTRUCTION_PORT).getSignal();
       this.operation = FUNCT_OPERATIONS[instruction];
     } else {
       this.operation = OPERATIONS[aluSignal]
     }
+    this.getPort(OPERATION_PORT).putSignal(this.operation);
+    this.stageProcessed = true;
   }
 
   getConfigForm(engine) {

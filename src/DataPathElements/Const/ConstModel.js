@@ -1,15 +1,17 @@
 import ElementNode from "../../Nodes/ElementNode";
+
+const VALUE_PORT = 'Valor'
+
 class ConstModel extends ElementNode {
-  constructor(name = "000000") {
+  constructor(name = "00000000000000000000000000000100") {
     super({name, type: 'const'});
-    this.addOutPort('Valor', true, 32);
-    this.value = "000000";
+    this.addOutPort(VALUE_PORT, true, 32);
+    this.value = "00000000000000000000000000000100";
   }
 
   processState() {
-    this.getOutPorts().forEach((port) => {
-      port.putSignal(this.value);
-    });
+    this.getPort(VALUE_PORT).putSignal(this.value);
+    this.stageProcessed = true;
   }
 
   getConfigForm(engine) {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Stencil() {
+function Stencil({serialize, processStage}) {
   const [collapsed, setCollapsed] = useState(false);
   return (
     <div id="stencil" className={collapsed ? "collapsed" : ""}>
@@ -181,6 +181,12 @@ function Stencil() {
         >
           Registry
         </div>
+        <button onClick={serialize}>
+          Serialize
+        </button>
+        <button onClick={processStage}>
+          Process Stage
+        </button>
       </div>
       <div className="divider" onClick={() => setCollapsed(!collapsed)}>
         <div className="handler-container">

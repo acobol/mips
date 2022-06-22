@@ -1,17 +1,27 @@
 import { action, makeObservable, observable } from "mobx";
 import ElementNode from "../../Nodes/ElementNode";
 
+const DATA1_PORT = 'Dato1';
+const DATA2_PORT = 'Dato2';
+const WRITE_REG_PORT = 'EscrReg';
+const READ_REG1_PORT = 'Reg. lectura 1';
+const READ_REG2_PORT = 'Reg. lectura 2';
+const REG_DEST_PORT = 'Reg. escritura';
+const DATA_TO_WRITE_PORT = 'Dato a escribir';
+
 class RegistryBankModel extends ElementNode {
   constructor(name = "Banco de registros") {
     super({name, type: 'registryBank'});
     this.registries = new Array(32).fill(''.padStart(32, '0'));
-    this.addOutPort('Dato1', true, 32);
-    this.addOutPort('Dato2', true, 32);
-    this.escrPort = this.addInPort('EscrReg');
-    this.regRead1 = this.addInPort('Reg. lectura 1');
-    this.regRead2 = this.addInPort('Reg. lectura 2');
-    this.regWrite = this.addInPort('Reg. escritura');
-    this.writeData = this.addInPort('Dato a escribir');
+    this.registries[8] = (12).toString(2).padStart(32, '0');
+    this.registries[9] = (10).toString(2).padStart(32, '0');
+    this.addOutPort(DATA1_PORT, true, 32);
+    this.addOutPort(DATA2_PORT, true, 32);
+    this.addInPort(WRITE_REG_PORT);
+    this.addInPort(READ_REG1_PORT);
+    this.addInPort(READ_REG2_PORT);
+    this.addInPort(REG_DEST_PORT);
+    this.addInPort(DATA_TO_WRITE_PORT);
     this.out1 = undefined;
     this.out2 = undefined;
     makeObservable(this, {
@@ -23,20 +33,23 @@ class RegistryBankModel extends ElementNode {
   }
 
   processState() {
-    const writeSignal = this.escrPort.getSignal();
+    const writeSignal = this.getPort(WRITE_REG_PORT).getSignal();
     if(writeSignal === '1') {
-      const writeAddress = this.regWrite.getSignal();
-      const data = this.writeData.getSignal();
+      const writeAddress = this.getPort(REG_DEST_PORT).getSignal();
+      const data = this.getPort(DATA_TO_WRITE_PORT).getSignal();
       const index = parseInt(writeAddress, 2);
       this.registries[index] = data;
     } else {
-      const readAddress1 = this.regRead1.getSignal();
-      const readAddress2 = this.regRead2.getSignal();
+      const readAddress1 = this.getPort(READ_REG1_PORT).getSignal();
+      const readAddress2 = this.getPort(READ_REG2_PORT).getSignal();
       const index1 = parseInt(readAddress1, 2);
       const index2 = parseInt(readAddress2, 2);
       this.out1 = this.registries[index1];
       this.out2 = this.registries[index2];
+      this.getPort(DATA1_PORT).putSignal(this.out1);
+      this.getPort(DATA2_PORT).putSignal(this.out2);
     }
+    this.stageProcessed = true;
   }
 
   getConfigForm(engine) {
