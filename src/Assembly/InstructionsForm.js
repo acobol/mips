@@ -208,6 +208,8 @@ export const InstructionsForm = ({ formats, saveInstruction }) => {
                 </div>
               );
               break;
+            default:
+              break;
           }
           return form;
         };
