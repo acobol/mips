@@ -1,5 +1,12 @@
 import { useState } from "react";
 import { Parser } from "jison";
+import IconButton from "@mui/material/IconButton";
+import CodeIcon from '@mui/icons-material/Code';
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import TextField from '@mui/material/TextField';
 
 const grammar = {
   lex: {
@@ -193,34 +200,70 @@ const parse = (text) => {
 export const AssemblyConstructor = ({loadCode}) => {
   const [text, setText] = useState("");
   const [assembled, setAssembled] = useState();
-  const [error, setError] = useState('');
+  const [error, setError] = useState();
+  const [open, setOpen] = useState(false);
+  const toggleModal = () => {
+    setOpen(!open);
+  }
+  const getHelperText = () => {
+    return error || "Introduce el programa en esamblador";
+  }
   return (
-    <div>
-      <textarea
-        defaultValue={text}
-        onChange={({ target: { value } }) => {
-          setAssembled(undefined);
-          setText(value);
-        }}
-      ></textarea>
-      <button
-        onClick={() => {
-          try {
-            const assembled = parse(text);
-            setAssembled(assembled);
-            setError("");
-          } catch(err) {
-            setError(err.message);
-          }
-        }}
+    <>
+      <IconButton
+        onClick={toggleModal}
+        aria-label="Cargar Programa"
+        title="Cargar Programa"
+        color="inherit"
       >
-        Assemble
-      </button>
-      {assembled ? <div>{JSON.stringify(assembled)}</div> : null}
-      {error ? <div>{error}</div> : null}
-      <button disabled={error || !assembled} onClick={() => {
-        loadCode(assembled);
-      }}>Cargar Programa</button>
-    </div>
+        <CodeIcon />
+      </IconButton>
+      <Dialog
+        open={open}
+        aria-labelledby="modal-modal-title"
+      >
+        <DialogTitle id="modal-modal-title">
+          Programa 
+        </DialogTitle>
+        <DialogContent dividers>
+          <TextField
+            label="Programa"
+            multiline
+            minRows={10}
+            error={!!error}
+            defaultValue={text}
+            onChange={({ target: { value } }) => {
+              setAssembled(undefined);
+              setText(value);
+            }}
+            helperText={getHelperText()}
+            variant="filled"
+          />
+          <button
+            onClick={() => {
+              try {
+                const assembled = parse(text);
+                setAssembled(assembled);
+                setError();
+              } catch(err) {
+                debugger;
+                setError(err.message);
+              }
+            }}
+          >
+            Ensamblar
+          </button>
+        </DialogContent>
+        <DialogActions>
+          <button disabled={error || !assembled} onClick={() => {
+            toggleModal();
+            loadCode(assembled);
+          }}>Cargar Programa</button>
+          <button onClick={() => {
+            toggleModal();
+          }}>Cancelar</button>
+        </DialogActions>
+      </Dialog>
+    </>
   );
 };

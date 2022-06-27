@@ -17,22 +17,6 @@ code {
   height: 100vh;
 }
 
-#stencil {
-  position: absolute;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  margin: auto;
-  background-color: white;
-  z-index: 10;
-}
-
-#stencil.collapsed > .panel {
-  width: 0;
-  min-width: 0;
-  padding: 0;
-}
-
 #configPanel {
   position: absolute;
   right: 0;
@@ -52,49 +36,18 @@ code {
 }
 
 #canvas {
-  min-width: 80%;
   height: 100%;
-  flex: 1;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
 }
 
 #canvas > * {
   height: 100%;
 }
 
-.panel {
-  overflow: hidden;
-  padding: 1rem;
-}
-
-.divider {
-  position: relative;
-  background-color: black;
-  width: 0.5em;
+#diagramStateCanvas {
+  width: 100%;
   height: 100%;
 }
 
-.handler-container {
-  position: absolute;
+#diagramStateCanvas > *{
   height: 100%;
-  display: flex;
-  width: 100%;
-  left: 100%;
-  flex-direction: column;
-  justify-content: space-around;
 }
-
-.handler {
-  width: 100%;
-  height: 5%;
-  background-color: black;
-  z-index: 2;
-}
-
-#configPanel .handler-container {
-  left: auto;
-  right: 100%;
-}
-

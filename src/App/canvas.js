@@ -1,21 +1,21 @@
 import { CanvasWidget } from "@projectstorm/react-canvas-core";
 import React from "react";
-import MultiplexorModel from "./DataPathElements/Multiplexor/MultiplexorModel";
-import ALUModel from "./DataPathElements/ALU/ALUModel";
-import RegistryBankModel from "./DataPathElements/RegistryBank/RegistryBankModel";
-import MemoryBankModel from "./DataPathElements/MemoryBank/MemoryBankModel";
-import SignExtensorModel from "./DataPathElements/SignExtend/SignExtendModel";
-import InstructionsRegistryModel from "./DataPathElements/InstructionsRegistry/InstructionsRegistryModel";
-import PCModel from './DataPathElements/PC/PCModel';
-import AddModel from "./DataPathElements/Add/AddModel";
-import ConstModel from "./DataPathElements/Const/ConstModel";
-import ShiftLeftModel from "./DataPathElements/ShiftLeft/ShiftLeftModel";
-import ALUControlModel from "./DataPathElements/ALUControl/ALUControlModel";
-import AndModel from "./DataPathElements/And/AndModel";
-import ControlModel from "./DataPathElements/Control/ControlModel";
-import ConcatenatorModel from "./DataPathElements/Concatenator/ConcatenatorModel";
-import OrModel from "./DataPathElements/Or/OrModel";
-import RegistryModel from "./DataPathElements/Registry/RegistryModel";
+import MultiplexorModel from "../DataPathElements/Multiplexor/MultiplexorModel";
+import ALUModel from "../DataPathElements/ALU/ALUModel";
+import RegistryBankModel from "../DataPathElements/RegistryBank/RegistryBankModel";
+import MemoryBankModel from "../DataPathElements/MemoryBank/MemoryBankModel";
+import SignExtensorModel from "../DataPathElements/SignExtend/SignExtendModel";
+import InstructionsRegistryModel from "../DataPathElements/InstructionsRegistry/InstructionsRegistryModel";
+import PCModel from '../DataPathElements/PC/PCModel';
+import AddModel from "../DataPathElements/Add/AddModel";
+import ConstModel from "../DataPathElements/Const/ConstModel";
+import ShiftLeftModel from "../DataPathElements/ShiftLeft/ShiftLeftModel";
+import ALUControlModel from "../DataPathElements/ALUControl/ALUControlModel";
+import AndModel from "../DataPathElements/And/AndModel";
+import ControlModel from "../DataPathElements/Control/ControlModel";
+import ConcatenatorModel from "../DataPathElements/Concatenator/ConcatenatorModel";
+import OrModel from "../DataPathElements/Or/OrModel";
+import RegistryModel from "../DataPathElements/Registry/RegistryModel";
 
 const models = {
   'ALU': ALUModel,

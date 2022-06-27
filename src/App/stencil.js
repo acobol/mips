@@ -1,9 +1,6 @@
-import { useState } from "react";
-
-function Stencil({serialize, processStage}) {
-  const [collapsed, setCollapsed] = useState(false);
+function Stencil() {
   return (
-    <div id="stencil" className={collapsed ? "collapsed" : ""}>
+    <div>
       <div className="panel">
         <div
           draggable
@@ -180,17 +177,6 @@ function Stencil({serialize, processStage}) {
           }}
         >
           Registry
-        </div>
-        <button onClick={serialize}>
-          Serialize
-        </button>
-        <button onClick={processStage}>
-          Process Stage
-        </button>
-      </div>
-      <div className="divider" onClick={() => setCollapsed(!collapsed)}>
-        <div className="handler-container">
-          <div className="handler" onClick={() => setCollapsed(!collapsed)}></div>
         </div>
       </div>
     </div>

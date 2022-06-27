@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import ElementNode from "./Nodes/ElementNode";
-import BitsLink from "./Links/BitsLinkModel";
+import ElementNode from "../Nodes/ElementNode";
+import BitsLink from "../Links/BitsLinkModel";
 import { observer } from "mobx-react-lite";
+import Drawer from "@mui/material/Drawer";
+
+const drawerWidth = 300;
 
 const NodeInspector = observer(({ node, engine }) => {
   return (
@@ -22,9 +25,7 @@ const NodeInspector = observer(({ node, engine }) => {
       {node.getOutPorts().map((port) => {
         return (
           <div key={port.options.id}>
-            <label>
-              Signal name {port.options.name}
-            </label>
+            <label>Signal name {port.options.name}</label>
             <label>
               Bits:
               <input
@@ -106,7 +107,6 @@ const getForm = (element, engine) => {
 
 const ConfigPanel = ({ diagram, engine }) => {
   const [selectedElement, setSelectedElement] = useState(undefined);
-  const [collapsed, setCollapsed] = useState(true);
   useEffect(() => {
     diagram.getNodes().forEach((node) => {
       node.registerListener({
@@ -143,7 +143,7 @@ const ConfigPanel = ({ diagram, engine }) => {
             setSelectedElement(undefined);
           }
         }
-      })
+      });
     });
     diagram.registerListener({
       linksUpdated: ({ link, isCreated }) => {
@@ -162,19 +162,22 @@ const ConfigPanel = ({ diagram, engine }) => {
     });
   }, [diagram, selectedElement]);
   return (
-    <div id="configPanel" className={collapsed ? "collapsed" : ""}>
-      <div className="divider" onClick={() => setCollapsed(!collapsed)}>
-        <div className="handler-container">
-          <div
-            className="handler"
-            onClick={() => setCollapsed(!collapsed)}
-          ></div>
-        </div>
+    <Drawer
+      sx={{
+        flexShrink: 0,
+        "& .MuiDrawer-paper": {
+          width: drawerWidth,
+          boxSizing: "border-box"
+        }
+      }}
+      variant="persistent"
+      anchor="right"
+      open={!!selectedElement}
+    >
+      <div>
+        <div className="panel">{getForm(selectedElement, engine)}</div>
       </div>
-      <div className="panel">
-        {getForm(selectedElement, engine)}
-      </div>
-    </div>
+    </Drawer>
   );
 };
 
