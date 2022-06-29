@@ -241,7 +241,6 @@ const STATES = {
   },
 };
 
-const INSTRUCTION_PORT = "Instrucción";
 const ESCR_PC_COND_PORT = "EscrPC Cond";
 const ESCR_PC_PORT = "EscrPC";
 const IOD_PORT = "IoD";

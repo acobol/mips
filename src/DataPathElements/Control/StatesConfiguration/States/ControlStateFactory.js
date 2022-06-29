@@ -1,12 +1,11 @@
 import { AbstractReactFactory } from "@projectstorm/react-canvas-core";
 import {
-  DefaultNodeWidget,
   DefaultPortLabel
 } from "@projectstorm/react-diagrams";
 import { ControlStateModel } from "./ControlStateModel";
 import styled from "@emotion/styled";
 import React, { useEffect, useMemo, useState } from "react";
-import { SIGNALS } from "../helpers/states";
+import { SIGNALS } from "../../helpers/states";
 
 const Node = styled.div`
   background-color: ${(p) => p.background};
@@ -52,12 +51,13 @@ const PortsContainer = styled.div`
 
 const ControlStateWidget = ({ engine, node }) => {
   const [selectedSignals, setSelectedSignals] = useState([...node.signals]);
+  const [name, setName] = useState(node.getOptions().name);
   const avaibleSignals = useMemo(() => {
     const signalNames = selectedSignals.map(({ name }) => name);
     return Object.getOwnPropertyNames(SIGNALS).filter((signal) => {
       return !signalNames.includes(signal);
     });
-  });
+  }, [selectedSignals]);
   const [selectedSignal, setSelectedSignal] = useState(avaibleSignals[0]);
   const generatePort = (port) => {
     return <DefaultPortLabel engine={engine} port={port} key={port.getID()} />;
@@ -80,10 +80,13 @@ const ControlStateWidget = ({ engine, node }) => {
     );
   };
   useEffect(() => {
-    node.registerListener({ selectionChanged: () => {
+    const listener = node.registerListener({ selectionChanged: () => {
       node.saveSignals([...selectedSignals]);
     } });
-  }, [node]);
+    return () => {
+      node.deregisterListener(listener);
+    }
+  }, [node, selectedSignals]);
 
   return (
     <Node
@@ -92,7 +95,18 @@ const ControlStateWidget = ({ engine, node }) => {
       background={node.getOptions().color}
     >
       <Title>
-        <TitleName>{node.getOptions().name}</TitleName>
+        <TitleName>{
+        node.isSelected()
+        ? <input
+            type={"text"}
+            defaultValue={name}
+            onChange={({ target: { value } }) => {
+              node.options.name = value;
+              setName(value);
+            }}
+          />
+        : node.getOptions().name
+        }</TitleName>
       </Title>
       <Ports>
         <PortsContainer>{node.getInPorts().map(generatePort)}</PortsContainer>

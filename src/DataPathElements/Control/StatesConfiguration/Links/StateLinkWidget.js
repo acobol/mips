@@ -2,7 +2,7 @@ import { LinkWidget, PointModel, RightAngleLinkWidget } from "@projectstorm/reac
 import {Point} from '@projectstorm/geometry';
 
 //Monkey patching RightAngleLinkWidget becuse doesn`t set the label position correctly
-class BitsLinkWidget extends RightAngleLinkWidget {
+class StateLinkWidget extends RightAngleLinkWidget {
   
   render() {
     		//ensure id is present for all points on the path
@@ -107,10 +107,8 @@ class BitsLinkWidget extends RightAngleLinkWidget {
 			);
 		}
 
-    //CHANGES START
-    //CHANGES END
 		return <g data-default-link-test={this.props.link.getOptions().testName}>{paths}</g>;
   }
 }
 
-export default BitsLinkWidget;
+export default StateLinkWidget;

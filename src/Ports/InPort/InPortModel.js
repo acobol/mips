@@ -22,6 +22,9 @@ export class InPortModel extends DefaultPortModel {
   addLink(link) {
     super.addLink(link);
     this.bits = link.selectedBits.to + 1 - link.selectedBits.from;
+    if(this.bits > 1) {
+      link.addLabel(this.bits);
+    }
     reaction(() => link.selectedBits.to + 1 - link.selectedBits.from, (bits) => {
       this.bits = bits;
     });
