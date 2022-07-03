@@ -1,18 +1,20 @@
 import { useState } from "react";
 import { Parser } from "jison";
 import IconButton from "@mui/material/IconButton";
-import CodeIcon from '@mui/icons-material/Code';
+import CodeIcon from "@mui/icons-material/Code";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import TextField from '@mui/material/TextField';
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import BuildIcon from '@mui/icons-material/Build';
 
 const grammar = {
   lex: {
     rules: [
-      ['\\s+', '/* skip whitespace */'],
-      [`#[^\\n]*`,          `/* skip comments */`],
+      ["\\s+", "/* skip whitespace */"],
+      [`#[^\\n]*`, `/* skip comments */`],
       [
         `\\$(` +
           [
@@ -56,61 +58,117 @@ const grammar = {
       ["(" + ["\\.text", "\\.data"].join("|") + ")", "return 'SEGMENT'"],
       [
         "\\b(" +
-          ["add", "sub", "and", "or", "nor", "slt", "lw", "sw", "beq", "j", "addi"]
+          [
+            "add",
+            "sub",
+            "and",
+            "or",
+            "nor",
+            "slt",
+            "lw",
+            "sw",
+            "beq",
+            "j",
+            "addi"
+          ]
             .reverse()
             .join("|") +
           ")\\b",
         "return 'OPCODE'"
       ],
-      ["[a-zA-Z0-9_]+\\:", `
+      [
+        "[a-zA-Z0-9_]+\\:",
+        `
         yytext = yytext.slice(0, -1);
         return 'LABEL';
-      `],
+      `
+      ],
       ["\\d+", "return 'DECIMAL'"],
-      ["[a-zA-Z0-9_]+",                "return 'ID'"],
-      ["\\(",                  "return '('"],
-      ["\\)",                  "return ')'"],
-      [",",                    "return ','"],
-      ["-",                    "return '-'"]
+      ["[a-zA-Z0-9_]+", "return 'ID'"],
+      ["\\(", "return '('"],
+      ["\\)", "return ')'"],
+      [",", "return ','"],
+      ["-", "return '-'"]
     ]
   },
-  "bnf": {
-    "Program":      [["Statements",  "return {type: 'Program', segments: yy.segments, labels: yy.labels, directives: yy.directives}"]],
-    "Statements":   ["Statement",
-                     "Statements Statement"],
-    "Statement":    [["LABEL",                    "yy.handleLabel({type: 'Label', value: $1})"],
-                     ["Element",                  "yy.handleElement($1)"]],
-    "Element":      [["Instruction",              "$$ = $1"],
-                     ["Data",                     "$$ = $1"]],
-    "Instruction":  [["OPCODE Operands",          "$$ = {type: 'Instruction', opcode: $1, operands: $2}"]],
-    "Operands":     [["Op",                       "$$ = [$1]"],
-                     ["Op , Op",                  "$$ = [$1, $3]"],
-                     ["Op , Op , Op",             "$$ = [$1, $3, $5]"]],
-    "Op":           [["Reg",                      "$$ = $1"],
-                     ["AddrImm",                  "$$ = $1"]],
-    "Reg":          [["NAME_REG",                 "$$ = {type: 'Register', value: $1, kind: 'Name'}"]],
-    "RegAddr":      [["( Reg )",                  "$$ = $2"]],
-    "AddrImm":      [["Offset RegAddr",           "$$ = {type: 'Address', offset: $1, base: $2}"],
-                     ["RegAddr",                  "$$ = {type: 'Address', offset: 0, base: $1}"],
-                     ["Offset",                   "$$ = $1"]],
-    "SignConst":    [["Const",                    "$$ = $1"],
-                     ["- Const",                  "$$ = {type: 'Unary', 'operator': '-', value: $2}"]],
-    "Offset":       [["SignConst",                "$$ = $1"],
-                     ["Const + Const",            "$$ = {type: 'Offset', kind: 'offset', base: $1, offset: $3, operator: '+'}"],
-                     ["Const - Const",            "$$ = {type: 'Offset', kind: 'offset', base: $1, offset: $3, operator: '-'}"]],
-    "Data":         [["DataMode DataList",        "$$ = {type: 'Data', mode: $1, value: $2.length === 1 ? $2[0] : $2}"],
-                     [".ascii String",            "$$ = {type: 'Data', mode: $1, value: $2}"],
-                     [".asciiz String",           "$$ = {type: 'Data', mode: $1, value: $2}"],
-                     [".space Expr",              "$$ = {type: 'Data', mode: $1, value: $2}"]],
-    "String":       [["STRING",                   "$$ = {type: 'String', value: $1}"]],
-    "DataMode":     [[".byte",                    "$$ = $1"],
-                     [".half",                    "$$ = $1"],
-                     [".word",                    "$$ = $1"],
-                     [".float",                   "$$ = $1"],
-                     [".double",                  "$$ = $1"]],
-    "DataList":     [["Expr",                     "$$ = [$1]"],
-                     ["DataList , Expr",          "$1.push($3); $$ = $1;"]],
-    "SegmentDir":   [["SEGMENT OptNumber",  `
+  bnf: {
+    Program: [
+      [
+        "Statements",
+        "return {type: 'Program', segments: yy.segments, labels: yy.labels, directives: yy.directives}"
+      ]
+    ],
+    Statements: ["Statement", "Statements Statement"],
+    Statement: [
+      ["LABEL", "yy.handleLabel({type: 'Label', value: $1})"],
+      ["Element", "yy.handleElement($1)"]
+    ],
+    Element: [
+      ["Instruction", "$$ = $1"],
+      ["Data", "$$ = $1"]
+    ],
+    Instruction: [
+      [
+        "OPCODE Operands",
+        "$$ = {type: 'Instruction', opcode: $1, operands: $2}"
+      ]
+    ],
+    Operands: [
+      ["Op", "$$ = [$1]"],
+      ["Op , Op", "$$ = [$1, $3]"],
+      ["Op , Op , Op", "$$ = [$1, $3, $5]"]
+    ],
+    Op: [
+      ["Reg", "$$ = $1"],
+      ["AddrImm", "$$ = $1"]
+    ],
+    Reg: [["NAME_REG", "$$ = {type: 'Register', value: $1, kind: 'Name'}"]],
+    RegAddr: [["( Reg )", "$$ = $2"]],
+    AddrImm: [
+      ["Offset RegAddr", "$$ = {type: 'Address', offset: $1, base: $2}"],
+      ["RegAddr", "$$ = {type: 'Address', offset: 0, base: $1}"],
+      ["Offset", "$$ = $1"]
+    ],
+    SignConst: [
+      ["Const", "$$ = $1"],
+      ["- Const", "$$ = {type: 'Unary', 'operator': '-', value: $2}"]
+    ],
+    Offset: [
+      ["SignConst", "$$ = $1"],
+      [
+        "Const + Const",
+        "$$ = {type: 'Offset', kind: 'offset', base: $1, offset: $3, operator: '+'}"
+      ],
+      [
+        "Const - Const",
+        "$$ = {type: 'Offset', kind: 'offset', base: $1, offset: $3, operator: '-'}"
+      ]
+    ],
+    Data: [
+      [
+        "DataMode DataList",
+        "$$ = {type: 'Data', mode: $1, value: $2.length === 1 ? $2[0] : $2}"
+      ],
+      [".ascii String", "$$ = {type: 'Data', mode: $1, value: $2}"],
+      [".asciiz String", "$$ = {type: 'Data', mode: $1, value: $2}"],
+      [".space Expr", "$$ = {type: 'Data', mode: $1, value: $2}"]
+    ],
+    String: [["STRING", "$$ = {type: 'String', value: $1}"]],
+    DataMode: [
+      [".byte", "$$ = $1"],
+      [".half", "$$ = $1"],
+      [".word", "$$ = $1"],
+      [".float", "$$ = $1"],
+      [".double", "$$ = $1"]
+    ],
+    DataList: [
+      ["Expr", "$$ = [$1]"],
+      ["DataList , Expr", "$1.push($3); $$ = $1;"]
+    ],
+    SegmentDir: [
+      [
+        "SEGMENT OptNumber",
+        `
       // Record current segment on entering it.
       yy.currentSegment = $1;
       yy.instructionsCount = 0;
@@ -129,24 +187,59 @@ const grammar = {
           instructions: [],
         };
       }
-    `]],
-    "SetDir":       [["SET_DIR SetDirArg",        "$$ = {type: 'Directive', kind: 'set', argument: $2}"]],
-    "SetDirArg":    [["SET_DIR_ARG",              "$$ = $1"],
-                     ["OPCODE",                   "$$ = $1"]],
-    "SymbolDir":    [["SYM_GLOB_DIR ID",          "$$ = {type: 'Directive', kind: 'symbol', directive: $1, name: $2}"],
-                     ["SYM_CONS_DIR ID , Const",  "$$ = {type: 'Directive', kind: 'symbol', directive: $1, name: $2, value: $4}"]],
-    "AlignDir":     [[".align , Expr",            "$$ = {type: 'Directive', kind: 'align', expression: $3}"]],
-    "OptNumber":    [["Number",                   "$$ = $1"],
-                     ["/* empty */", "$$ = undefined"]],
-    "OptID":        [["ID",                       "$$ = $1"],
-                     ["/* empty */", "$$ = undefined"]],
-    "OptOffset":    [["Offset",                   "$$ = $1"],
-                     ["/* empty */",                        "$$ = {type: 'Offset', kind: 'Const', value: 0}"]],
-    "Number":       [["DECIMAL",                  "$$ = {type: 'Number', kind: 'decimal', value: Number($1)}"],
-                     ["HEXADECIMAL",              "$$ = {type: 'Number', kind: 'hex', value: Number($1), raw: $1}"]],
-    "Const":        [["Number",                   "$$ = $1"],
-                     ["CHAR",                     "$$ = {type: 'Char', value: $1}"],
-                     ["ID",                       "$$ = {type: 'Identifier', value: $1}"]],
+    `
+      ]
+    ],
+    SetDir: [
+      [
+        "SET_DIR SetDirArg",
+        "$$ = {type: 'Directive', kind: 'set', argument: $2}"
+      ]
+    ],
+    SetDirArg: [
+      ["SET_DIR_ARG", "$$ = $1"],
+      ["OPCODE", "$$ = $1"]
+    ],
+    SymbolDir: [
+      [
+        "SYM_GLOB_DIR ID",
+        "$$ = {type: 'Directive', kind: 'symbol', directive: $1, name: $2}"
+      ],
+      [
+        "SYM_CONS_DIR ID , Const",
+        "$$ = {type: 'Directive', kind: 'symbol', directive: $1, name: $2, value: $4}"
+      ]
+    ],
+    AlignDir: [
+      [
+        ".align , Expr",
+        "$$ = {type: 'Directive', kind: 'align', expression: $3}"
+      ]
+    ],
+    OptNumber: [
+      ["Number", "$$ = $1"],
+      ["/* empty */", "$$ = undefined"]
+    ],
+    OptID: [
+      ["ID", "$$ = $1"],
+      ["/* empty */", "$$ = undefined"]
+    ],
+    OptOffset: [
+      ["Offset", "$$ = $1"],
+      ["/* empty */", "$$ = {type: 'Offset', kind: 'Const', value: 0}"]
+    ],
+    Number: [
+      ["DECIMAL", "$$ = {type: 'Number', kind: 'decimal', value: Number($1)}"],
+      [
+        "HEXADECIMAL",
+        "$$ = {type: 'Number', kind: 'hex', value: Number($1), raw: $1}"
+      ]
+    ],
+    Const: [
+      ["Number", "$$ = $1"],
+      ["CHAR", "$$ = {type: 'Char', value: $1}"],
+      ["ID", "$$ = {type: 'Identifier', value: $1}"]
+    ]
   }
 };
 
@@ -159,12 +252,12 @@ parser.yy = {
   directives: [],
   onParseBegin() {
     this.segments = {
-      '.text': {
+      ".text": {
         address: undefined,
         instructions: []
       }
     };
-    this.currentSegment = '.text';
+    this.currentSegment = ".text";
     this.instructionsCount = 0;
     this.labels = {};
     this.directives = [];
@@ -173,41 +266,41 @@ parser.yy = {
     this.labels[label.value] = {
       address: this.instructionsCount,
       segment: this.currentSegment
-    }
+    };
   },
   handleElement(element) {
     switch (element.type) {
-      case 'Instruction':
-        case 'Data':
-          this.instructionsCount++;
-          this.segments[this.currentSegment].instructions.push(element);
-          break;
-        case 'Directive':
-        case 'Segment':
-          this.directives.push(element);
-          break;
-        default:
-          throw new Error('Unexpected statement: ' + element.type);
+      case "Instruction":
+      case "Data":
+        this.instructionsCount++;
+        this.segments[this.currentSegment].instructions.push(element);
+        break;
+      case "Directive":
+      case "Segment":
+        this.directives.push(element);
+        break;
+      default:
+        throw new Error("Unexpected statement: " + element.type);
     }
   }
-}
+};
 
 const parse = (text) => {
   parser.yy.onParseBegin();
   return parser.parse(text);
 };
 
-export const AssemblyConstructor = ({loadCode}) => {
+export const AssemblyConstructor = ({ loadCode }) => {
   const [text, setText] = useState("");
   const [assembled, setAssembled] = useState();
   const [error, setError] = useState();
   const [open, setOpen] = useState(false);
   const toggleModal = () => {
     setOpen(!open);
-  }
+  };
   const getHelperText = () => {
     return error || "Introduce el programa en esamblador";
-  }
+  };
   return (
     <>
       <IconButton
@@ -218,13 +311,8 @@ export const AssemblyConstructor = ({loadCode}) => {
       >
         <CodeIcon />
       </IconButton>
-      <Dialog
-        open={open}
-        aria-labelledby="modal-modal-title"
-      >
-        <DialogTitle id="modal-modal-title">
-          Programa 
-        </DialogTitle>
+      <Dialog open={open} aria-labelledby="modal-modal-title">
+        <DialogTitle id="modal-modal-title">Programa</DialogTitle>
         <DialogContent dividers>
           <TextField
             label="Programa"
@@ -239,29 +327,43 @@ export const AssemblyConstructor = ({loadCode}) => {
             helperText={getHelperText()}
             variant="filled"
           />
-          <button
+          <IconButton
+            aria-label="Ensamblar"
             onClick={() => {
               try {
                 const assembled = parse(text);
                 setAssembled(assembled);
                 setError();
-              } catch(err) {
+              } catch (err) {
                 debugger;
                 setError(err.message);
               }
             }}
+            title="Ensamblar"
+            color="inherit"
           >
-            Ensamblar
-          </button>
+            <BuildIcon />
+          </IconButton>
         </DialogContent>
         <DialogActions>
-          <button disabled={error || !assembled} onClick={() => {
-            toggleModal();
-            loadCode(assembled);
-          }}>Cargar Programa</button>
-          <button onClick={() => {
-            toggleModal();
-          }}>Cancelar</button>
+          <Button
+            variant="contained"
+            disabled={error || !assembled}
+            onClick={() => {
+              toggleModal();
+              loadCode(assembled);
+            }}
+          >
+            Cargar Programa
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => {
+              toggleModal();
+            }}
+          >
+            Cancelar
+          </Button>
         </DialogActions>
       </Dialog>
     </>

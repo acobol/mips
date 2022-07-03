@@ -25,6 +25,7 @@ class PCModel extends ElementNode {
     const escr = this.getPort(ESCR_PORT).getSignal();
     if(escr === "1") {
       this.currentAddress = this.getPort(NEW_ADDRESS_PORT).getSignal();
+      this.colorLinks(NEW_ADDRESS_PORT);
     }
     this.stageProcessed = true;
   }

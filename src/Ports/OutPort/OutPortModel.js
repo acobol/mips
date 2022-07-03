@@ -46,7 +46,7 @@ export class OutPortModel extends DefaultPortModel {
 
   getSignal() {
     if (!this.signal && !this.parent.stageProcessed) {
-      this.parent.processState();
+      this.parent.processState(true);
     }
     return this.signal;
   }

@@ -84,17 +84,6 @@ function Stencil() {
           onDragStart={(event) => {
             event.dataTransfer.setData(
               "model-def",
-              JSON.stringify({ type: "add" })
-            );
-          }}
-        >
-          Add
-        </div>
-        <div
-          draggable
-          onDragStart={(event) => {
-            event.dataTransfer.setData(
-              "model-def",
               JSON.stringify({ type: "const" })
             );
           }}

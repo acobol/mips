@@ -24,12 +24,16 @@ class ConcatenatorModel extends ElementNode {
     })
   }
 
-  processState() {
+  processState(requested = false) {
     const aValue = this.getPort(A_PORT).getSignal();
     const bValue = this.getPort(B_PORT).getSignal();
     if(aValue && bValue) {
       this.result = aValue + bValue;
       this.getPort(RESULT_PORT).putSignal(this.result);
+      if(requested) {
+        this.colorLinks(A_PORT);
+        this.colorLinks(B_PORT);
+      }
     }
     this.stageProcessed = true;
   }

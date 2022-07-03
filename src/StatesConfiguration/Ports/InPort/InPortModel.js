@@ -1,4 +1,5 @@
 import {DefaultPortModel} from '@projectstorm/react-diagrams';
+import { EditableLabelModel } from '../../Labels/EditableLabelModel';
 
 export class InPortModel extends DefaultPortModel {
   constructor(options) {
@@ -11,6 +12,13 @@ export class InPortModel extends DefaultPortModel {
 	createLinkModel(factory) {
     return false;
 	}
+
+  addLink(link) {
+    super.addLink(link);
+    if(!link.getLabels().length) {
+      link.addLabel(new EditableLabelModel());
+    }
+  }
 }
 
 export default InPortModel;

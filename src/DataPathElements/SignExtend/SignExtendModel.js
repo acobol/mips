@@ -16,11 +16,14 @@ class SignExtensorModel extends ElementNode {
     })
   }
 
-  processState() {
+  processState(requested = true) {
     const signal = this.getPort(IN_PORT).getSignal();
     if(signal) {
       this.result = signal.padStart(this.getPort(OUT_PORT).bitsNumber, signal.charAt(0));
       this.getPort(OUT_PORT).putSignal(this.result);
+      if(requested) {
+        this.colorLinks(IN_PORT);
+      }
     }
     this.stageProcessed = true;
   }

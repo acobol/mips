@@ -35,6 +35,7 @@ class InstructionsRegsitryModel extends ElementNode {
     const escrIRSignal = this.getPort(ESCR_IR_PORT).getSignal();
     if(escrIRSignal === '1') {
       this.instruction = this.getPort(ADDRESSS_PORT).getSignal();
+      this.colorLinks(ADDRESSS_PORT);
     }
     this.stageProcessed = true;
   }

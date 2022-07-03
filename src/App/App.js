@@ -23,6 +23,8 @@ import OrFactory from "../DataPathElements/Or/OrFactory";
 import RegistryFactory from "../DataPathElements/Registry/RegistryFactory";
 import AppContent from "./AppContent";
 import { StyledEngineProvider } from "@mui/material/styles";
+import { SignalsManager } from "../Contexts/SignalsContext";
+import { OperationsManager } from "../Contexts/OperationsContext";
 
 const nodeFactories = [
   MultiplexorFactory,
@@ -70,7 +72,11 @@ function App() {
 
   return (
     <StyledEngineProvider injectFirst>
-      <AppContent engine={engine}></AppContent>
+      <SignalsManager>
+        <OperationsManager>
+          <AppContent engine={engine}></AppContent>
+        </OperationsManager>
+      </SignalsManager>
     </StyledEngineProvider>
   );
 }

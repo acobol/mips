@@ -36,6 +36,7 @@ class ALUControlModel extends ElementNode {
     const aluSignal = this.getPort(ALU_OP_PORT).getSignal();
     if(aluSignal === '10') {
       const instruction =  this.getPort(INSTRUCTION_PORT).getSignal();
+      this.colorLinks(INSTRUCTION_PORT);
       this.operation = FUNCT_OPERATIONS[instruction];
     } else {
       this.operation = OPERATIONS[aluSignal]

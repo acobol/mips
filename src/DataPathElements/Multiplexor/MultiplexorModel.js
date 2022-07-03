@@ -44,7 +44,9 @@ class MultiplexorModel extends ElementNode {
     if(signal) {
       const intValue = parseInt(signal, 2);
       if(Number.isInteger(intValue)) {
-        this.out = this.getPort(`signal${intValue}`).getSignal();
+        const portName = `signal${intValue}`;
+        this.out = this.getPort(portName).getSignal();
+        this.colorLinks(portName);
         this.getPort(OUT_PORT).putSignal(this.out);
       }
     }

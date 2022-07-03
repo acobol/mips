@@ -1,5 +1,5 @@
 import { RightAngleLinkModel } from "@projectstorm/react-diagrams";
-import StateLinkWidget from "./StateLinkWidget";
+import BitsLinkWidget from "../../Links/BitsLinkWidget";
 
 class StateLink extends RightAngleLinkModel {
   constructor(options, bits) {
@@ -10,7 +10,7 @@ class StateLink extends RightAngleLinkModel {
   }
 
   generateReactWidget(event) {
-		return <StateLinkWidget diagramEngine={this.engine} link={event.model} factory={this} />;
+		return <BitsLinkWidget diagramEngine={this.engine} link={event.model} factory={this} />;
 	}
 }
 

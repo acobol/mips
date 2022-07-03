@@ -1,7 +1,6 @@
 import { action, makeObservable, observable } from "mobx";
 import ElementNode from "../../Nodes/ElementNode";
 import {STATES} from './helpers/states.js';
-import StateConfiguration from "./StatesConfiguration/StateConfiguration";
 
 const INSTRUCTION_PORT = "Instrucción";
 const ESCR_PC_COND_PORT = "EscrPC Cond";
@@ -35,7 +34,8 @@ class ControlModel extends ElementNode {
     this.addOutPort(ALU_SOURCE_B_PORT, true, 2);
     this.addOutPort(REG_WRITE_PORT, true, 1);
     this.addOutPort(REG_DEST_PORT, true, 1);
-    this.state = '0000';
+    this.initialState = '0000';
+    this.state = this.initialState;
     this.states = STATES;
     makeObservable(this, {
       state: observable,
@@ -46,9 +46,19 @@ class ControlModel extends ElementNode {
   processState() {
     const state = this.states[this.state];
     this.getOutPorts().forEach((port) => {
-      port.putSignal(state.signals[port.options.name]);
+      const signal = state.signals[port.options.name];
+      port.putSignal(signal);
+      const signalResult = parseInt(signal);
+      let color = 'grey';
+      if(signalResult === 0) {
+        color = 'red';
+      }
+      if(signalResult > 0) {
+        color = 'orange';
+      }
+      this.colorLinks(port.options.name, color);
     });
-    const instruction = this.state === '0000' ? '000000' : this.getPort(INSTRUCTION_PORT).getSignal();
+    const instruction = this.state === this.initialState ? '000000' : this.getPort(INSTRUCTION_PORT).getSignal();
     this.state = state.nextState[instruction];
     this.stageProcessed = true;
   }
@@ -59,8 +69,13 @@ class ControlModel extends ElementNode {
       <button onClick={() => {
         this.processState();
       }}>Next state</button>
-      <StateConfiguration></StateConfiguration>
     </div>
+  }
+
+  modifyStates(states, initialState) {
+    this.states = states;
+    this.initialState = initialState;
+    this.state = initialState;
   }
 }
 

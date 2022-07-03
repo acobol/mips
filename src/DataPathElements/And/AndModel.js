@@ -19,8 +19,22 @@ class AndModel extends ElementNode {
     const op2 = this.getPort(AND2_PORT).getSignal();
     this.value = and(op1, op2).toString();
     this.getPort(RESULT_PORT).putSignal(this.value);
+    this.setLinkColor(this.value, RESULT_PORT);
     this.stageProcessed = true;
   }
+
+  setLinkColor(signal, port) {
+    let color = 'grey';
+    const value = parseInt(signal);
+    if(value === 0) {
+      color = 'red';
+    }
+    if(value > 0) {
+      color = 'orange';
+    }
+    this.colorLinks(port, color);
+  }
+
 }
 
 export default AndModel;

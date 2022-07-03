@@ -61,6 +61,14 @@ class ElementNode extends DefaultNodeModel {
       port.clearSignal();
     })
   }
+
+  colorLinks(port, color = 'blue') {
+    const links = this.getPort(port).getLinks();
+    for (const linkId in links) {
+      const link = links[linkId];
+      link.getOptions().color = color;
+    }
+  }
 }
 
 export default ElementNode;

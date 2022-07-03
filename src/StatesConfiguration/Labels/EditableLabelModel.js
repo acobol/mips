@@ -7,18 +7,18 @@ export class EditableLabelModel extends LabelModel {
 			...options,
 			type: 'editable-label'
 		});
-		this.value = options?.value || '';
+		this.instructions = options?.instructions || [];
 	}
 
 	serialize() {
 		return {
 			...super.serialize(),
-			value: this.value
+			instructions: this.instructions
 		};
 	}
 
 	deserialize(event) {
 		super.deserialize(event);
-		this.value = event.data.value;
+		this.instructions = event.data.instructions;
 	}
 }

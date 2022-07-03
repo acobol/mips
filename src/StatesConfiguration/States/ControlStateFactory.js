@@ -1,11 +1,9 @@
 import { AbstractReactFactory } from "@projectstorm/react-canvas-core";
-import {
-  DefaultPortLabel
-} from "@projectstorm/react-diagrams";
+import { DefaultPortLabel } from "@projectstorm/react-diagrams";
 import { ControlStateModel } from "./ControlStateModel";
 import styled from "@emotion/styled";
-import React, { useEffect, useMemo, useState } from "react";
-import { SIGNALS } from "../../helpers/states";
+import React, { useContext, useEffect, useMemo, useState } from "react";
+import { SignalContext } from "../../Contexts/SignalsContext";
 
 const Node = styled.div`
   background-color: ${(p) => p.background};
@@ -51,13 +49,13 @@ const PortsContainer = styled.div`
 
 const ControlStateWidget = ({ engine, node }) => {
   const [selectedSignals, setSelectedSignals] = useState([...node.signals]);
-  const [name, setName] = useState(node.getOptions().name);
+  const {signals} = useContext(SignalContext);
   const avaibleSignals = useMemo(() => {
     const signalNames = selectedSignals.map(({ name }) => name);
-    return Object.getOwnPropertyNames(SIGNALS).filter((signal) => {
+    return Object.getOwnPropertyNames(signals).filter((signal) => {
       return !signalNames.includes(signal);
     });
-  }, [selectedSignals]);
+  }, [selectedSignals, signals]);
   const [selectedSignal, setSelectedSignal] = useState(avaibleSignals[0]);
   const generatePort = (port) => {
     return <DefaultPortLabel engine={engine} port={port} key={port.getID()} />;
@@ -66,26 +64,44 @@ const ControlStateWidget = ({ engine, node }) => {
     return (
       <div key={signal.name}>
         {signal.name}:{" "}
-        <input
-          type={"text"}
-          defaultValue={signal.value}
-          maxLength={SIGNALS[signal.name]}
-          onChange={({ target: { value } }) => {
-            const newSignals = [...selectedSignals]
-            newSignals[index].value = value;
-            setSelectedSignals(newSignals);
-          }}
-        />
+        {node.isSelected() ? (
+          <>
+            <input
+              type={"text"}
+              defaultValue={signal.value}
+              maxLength={signals[signal.name]}
+              onChange={({ target: { value } }) => {
+                const newSignals = [...selectedSignals];
+                newSignals[index].value = value;
+                setSelectedSignals(newSignals);
+              }}
+            />
+            <button
+              onClick={() => {
+                const newSignals = selectedSignals.filter(({name}) => {
+                  return signal.name !== name;
+                });
+                setSelectedSignals(newSignals);
+              }}
+            >
+              Quitar señal
+            </button>
+          </>
+        ) : (
+          signal.value
+        )}
       </div>
     );
   };
   useEffect(() => {
-    const listener = node.registerListener({ selectionChanged: () => {
-      node.saveSignals([...selectedSignals]);
-    } });
+    const listener = node.registerListener({
+      selectionChanged: () => {
+        node.saveSignals([...selectedSignals]);
+      }
+    });
     return () => {
       node.deregisterListener(listener);
-    }
+    };
   }, [node, selectedSignals]);
 
   return (
@@ -95,18 +111,7 @@ const ControlStateWidget = ({ engine, node }) => {
       background={node.getOptions().color}
     >
       <Title>
-        <TitleName>{
-        node.isSelected()
-        ? <input
-            type={"text"}
-            defaultValue={name}
-            onChange={({ target: { value } }) => {
-              node.options.name = value;
-              setName(value);
-            }}
-          />
-        : node.getOptions().name
-        }</TitleName>
+        <TitleName>{node.getOptions().name}</TitleName>
       </Title>
       <Ports>
         <PortsContainer>{node.getInPorts().map(generatePort)}</PortsContainer>
@@ -129,7 +134,7 @@ const ControlStateWidget = ({ engine, node }) => {
             onClick={() => {
               const signal = {
                 name: selectedSignal,
-                value: "".padStart(SIGNALS[selectedSignal], "0")
+                value: "".padStart(signals[selectedSignal], "0")
               };
               node.addSignal(signal);
               setSelectedSignals([...selectedSignals, signal]);

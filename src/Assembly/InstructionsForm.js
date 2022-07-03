@@ -246,7 +246,7 @@ export const InstructionsForm = ({ formats, saveInstruction }) => {
             parameters
           });
           setInstructionName("");
-          setParameters([]);
+          setParameters([{type: 'Const', value: '', field: 'Opcode'}]);
           setSelectedFormat(formats[0]);
         }}
       >

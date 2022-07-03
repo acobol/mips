@@ -7,6 +7,10 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import { TabPanel } from "../App/TabPanel";
+import Button from '@mui/material/Button';
 
 const FORMATS = new Map();
 FORMATS.set("R", {
@@ -113,8 +117,8 @@ INSTRUCTIONS.set("lw", {
     { type: "Address", offset: "immediate", registry: "rs" }
   ]
 });
-INSTRUCTIONS.set("lw", {
-  instructionName: "lw",
+INSTRUCTIONS.set("sw", {
+  instructionName: "sw",
   format: "I",
   parameters: [
     { type: "Const", value: "101011", field: "Opcode" },
@@ -145,8 +149,12 @@ export const InstructionsManager = ({ saveInstructions }) => {
   const [formats, setFormats] = useState(FORMATS);
   const [instructions, setInstructions] = useState(INSTRUCTIONS);
   const [open, setOpen] = useState(false);
+  const [tab, setTab] = useState(0);
   const toggleModal = () => {
     setOpen(!open);
+  };
+  const handleChangeTab = (event, newValue) => {
+    setTab(newValue);
   };
   return (
     <>
@@ -158,44 +166,55 @@ export const InstructionsManager = ({ saveInstructions }) => {
       >
         <SourceIcon />
       </IconButton>
-      <Dialog
-        open={open}
-        aria-labelledby="modal-modal-title"
-      >
+      <Dialog open={open} aria-labelledby="modal-modal-title">
         <DialogTitle id="modal-modal-title">
           Generar nuevas instrucciones
         </DialogTitle>
         <DialogContent dividers>
-          <FormatForms
-            saveFormat={(format) => {
-              const newFormats = new Map(formats);
-              newFormats.set(format.formatName, format);
-              setFormats(newFormats);
-            }}
-          ></FormatForms>
-          {formats.size > 0 ? (
-            <InstructionsForm
-              formats={formats}
-              saveInstruction={(instruction) => {
-                const newInstructions = new Map(instructions);
-                newInstructions.set(instruction.instructionName, instruction);
-                setInstructions(newInstructions);
+          <Tabs value={tab} onChange={handleChangeTab}>
+            <Tab label="Instrucciones" />
+            <Tab label="Formatos" />
+          </Tabs>
+          <TabPanel value={tab} index={0}>
+            {formats.size > 0 && (
+              <InstructionsForm
+                formats={formats}
+                saveInstruction={(instruction) => {
+                  const newInstructions = new Map(instructions);
+                  newInstructions.set(instruction.instructionName, instruction);
+                  setInstructions(newInstructions);
+                }}
+              ></InstructionsForm>
+            )}
+          </TabPanel>
+          <TabPanel value={tab} index={1}>
+            <FormatForms
+              saveFormat={(format) => {
+                const newFormats = new Map(formats);
+                newFormats.set(format.formatName, format);
+                setFormats(newFormats);
               }}
-            ></InstructionsForm>
-          ) : null}
+            ></FormatForms>
+          </TabPanel>
         </DialogContent>
         <DialogActions>
-          <button
+          <Button
+            variant="contained"
             onClick={() => {
               toggleModal();
               saveInstructions({ formats, instructions });
             }}
           >
             Cargar Instrucciones
-          </button>
-          <button onClick={() => {
-            toggleModal();
-          }}>Cancelar</button>
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => {
+              toggleModal();
+            }}
+          >
+            Cancelar
+          </Button>
         </DialogActions>
       </Dialog>
     </>

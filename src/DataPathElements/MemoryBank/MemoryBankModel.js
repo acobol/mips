@@ -155,7 +155,9 @@ class MemoryBankModel extends ElementNode {
     const writeSignal = this.getPort(WRITE_MEM_PORT).getSignal();
     const address = this.getPort(ADDRESSS_PORT).getSignal();
     if(writeSignal === '1') {
+      this.colorLinks(ADDRESSS_PORT);
       const data = this.getPort(DATA_TO_WRITE_PORT).getSignal();
+      this.colorLinks(DATA_TO_WRITE_PORT);
       const bytes = data.match(/([0-1]{8})([0-1]{8})([0-1]{8})([0-1]{8})/);
       const index = parseInt(address, 2);
       for(let i = 0; i < 4; i++) {
@@ -164,6 +166,7 @@ class MemoryBankModel extends ElementNode {
     } 
     const readSignal = this.getPort(READ_MEM_PORT).getSignal();
     if(readSignal === '1') {
+      this.colorLinks(ADDRESSS_PORT);
       const index = parseInt(address, 2);
       let result = '';
       for(let i = 0; i < 4; i++) {

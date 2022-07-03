@@ -3,7 +3,7 @@ import InPortModel from "../Ports/InPort/InPortModel";
 import OutPortModel from "../Ports/OutPort/OutPortModel";
 
 export class ControlStateModel extends DefaultNodeModel {
-  constructor({name}) {
+  constructor(name) {
       super({
           name,
           type: 'state'
@@ -45,5 +45,16 @@ export class ControlStateModel extends DefaultNodeModel {
       this.portsOut.splice(0, 0, p);
     }
     return this.addPort(p);
+  }
+
+  serialize() {
+    return Object.assign(Object.assign({}, super.serialize()), {
+      signals: this.signals
+    });
+  }
+
+  deserialize(event) {
+    super.deserialize(event);
+    this.signals = event.data.signals
   }
 }

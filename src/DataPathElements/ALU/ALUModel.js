@@ -47,11 +47,14 @@ class ALUModel extends ElementNode {
   processState() {
     const reg1 = this.getPort(REG1_PORT).getSignal();
     if(reg1) {
+      this.colorLinks(REG1_PORT);
       const a = Array.from(reg1);
       const reg2 = this.getPort(REG2_PORT).getSignal();
       if(reg2) {
+        this.colorLinks(REG2_PORT);
         const b = Array.from(reg2);
         const operationSignal = this.getPort(ALU_OPERATION_PORT).getSignal();
+        this.colorLinks(ALU_OPERATION_PORT, 'orange');
         const operation = OPERATIONS[operationSignal];
         const result = [];
         switch (operation) {
@@ -112,6 +115,7 @@ class ALUModel extends ElementNode {
         }, "0"));
         this.getPort(RESULT_PORT).putSignal(this.value);
         this.getPort(ZERO_PORT).putSignal(this.zero);
+        this.colorLinks(ZERO_PORT, this.zero === '0' ? 'grey' : 'orange');
       }
     }
     this.stageProcessed = true;

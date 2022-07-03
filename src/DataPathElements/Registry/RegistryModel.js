@@ -27,6 +27,9 @@ class RegistryModel extends ElementNode {
       this.getPort(OUT_SIGNAL_PORT).putSignal(this.currentValue);
     }
     this.currentValue = this.getPort(IN_SIGNAL_PORT).getSignal();
+    if(this.currentValue) {
+      this.colorLinks(IN_SIGNAL_PORT);
+    }
     this.stageProcessed = true;
   }
 

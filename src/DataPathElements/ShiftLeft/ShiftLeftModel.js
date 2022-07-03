@@ -43,12 +43,15 @@ class ShiftLeftModel extends ElementNode {
     });
   }
 
-  processState() {
+  processState(requested = false) {
     const signal = this.getPort(IN_PORT).getSignal();
     if(signal) {
       const value = parseInt(signal, 2) << this.shift;
       this.result = twosComplement(value, this.getPort(OUT_PORT).bitsNumber);
       this.getPort(OUT_PORT).putSignal(this.result);
+      if(requested) {
+        this.colorLinks(IN_PORT);
+      }
     }
     this.stageProcessed = true;
   }

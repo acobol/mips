@@ -36,12 +36,16 @@ class RegistryBankModel extends ElementNode {
     const writeSignal = this.getPort(WRITE_REG_PORT).getSignal();
     if(writeSignal === '1') {
       const writeAddress = this.getPort(REG_DEST_PORT).getSignal();
+      this.colorLinks(REG_DEST_PORT);
       const data = this.getPort(DATA_TO_WRITE_PORT).getSignal();
+      this.colorLinks(DATA_TO_WRITE_PORT);
       const index = parseInt(writeAddress, 2);
       this.registries[index] = data;
     } else {
       const readAddress1 = this.getPort(READ_REG1_PORT).getSignal();
+      this.colorLinks(READ_REG1_PORT);
       const readAddress2 = this.getPort(READ_REG2_PORT).getSignal();
+      this.colorLinks(READ_REG2_PORT);
       const index1 = parseInt(readAddress1, 2);
       const index2 = parseInt(readAddress2, 2);
       this.out1 = this.registries[index1];

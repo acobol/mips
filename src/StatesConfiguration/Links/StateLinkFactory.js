@@ -1,6 +1,6 @@
-import { DefaultLinkFactory} from "@projectstorm/react-diagrams";
+import { DefaultLinkFactory } from "@projectstorm/react-diagrams";
+import BitsLinkWidget from "../../Links/BitsLinkWidget";
 import StateLinkModel from "./StateLinkModel";
-import StateLinkWidget from "./StateLinkWidget";
 
 class StateLinkFactory extends DefaultLinkFactory {
   constructor() {
@@ -12,7 +12,7 @@ class StateLinkFactory extends DefaultLinkFactory {
   }
 
   generateReactWidget(event) {
-		return <StateLinkWidget diagramEngine={this.engine} link={event.model} factory={this} />;
+		return <BitsLinkWidget diagramEngine={this.engine} link={event.model} factory={this} />;
 	}
 }
 
